@@ -1,0 +1,21 @@
+{
+  "freq": "5000",
+  "logs": [
+    {
+      "name": "cputemp",
+      "cmd": "echo 34.5"
+    },
+    {
+      "name": "gputemp",
+      "cmd": "echo 42.3"
+    },
+    {
+      "name": "time",
+      "cmd": "echo %time%"
+    },
+    {
+      "name": "blabl",
+      "cmd": "echo hello + %time%"
+    }
+  ]
+}

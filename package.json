@@ -1,0 +1,21 @@
+{
+  "name": "piapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup-win": "start ./tasks/setup.sh",
+    "setup-linux": "source ./tasks/setup.sh",
+    "build": "tsc -p .",
+    "start": "node ./bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.5"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}

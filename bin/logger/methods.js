@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getDateString = exports.getTimeString = exports.log = exports.update = exports.logData = void 0;
+var logData_1 = require("./methods/logData");
+Object.defineProperty(exports, "logData", { enumerable: true, get: function () { return logData_1.logData; } });
+var update_1 = require("./methods/update");
+Object.defineProperty(exports, "update", { enumerable: true, get: function () { return update_1.update; } });
+var log_1 = require("./methods/log");
+Object.defineProperty(exports, "log", { enumerable: true, get: function () { return log_1.log; } });
+var getTimeString_1 = require("./methods/getTimeString");
+Object.defineProperty(exports, "getTimeString", { enumerable: true, get: function () { return getTimeString_1.getTimeString; } });
+var getDateString_1 = require("./methods/getDateString");
+Object.defineProperty(exports, "getDateString", { enumerable: true, get: function () { return getDateString_1.getDateString; } });
