@@ -45,6 +45,7 @@ function update() {
             ans.push(stdout.replace('\n', ''));
         }
         this.logData(ans);
+        this.write();
         this.update();
     });
 }

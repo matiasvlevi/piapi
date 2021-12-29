@@ -1,0 +1,17 @@
+html,
+body {
+  margin: 0px;
+}
+
+.plot {
+  max-width: 90%;
+  max-height: 90%;
+  margin:auto;
+  width:fit-content;
+  height:fit-content;
+}
+
+.grid {
+  display:flex;
+  flex-wrap: wrap;
+}

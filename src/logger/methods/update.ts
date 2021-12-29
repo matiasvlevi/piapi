@@ -18,7 +18,7 @@ async function update(this: Logger) {
     ans.push(stdout.replace('\n', ''));
   }
   this.logData(ans);
+  this.write();
   this.update();
-
 }
 export { update };

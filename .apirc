@@ -3,19 +3,11 @@
   "logs": [
     {
       "name": "cputemp",
-      "cmd": "echo 34.5"
+      "cmd": ""
     },
     {
       "name": "gputemp",
-      "cmd": "echo 42.3"
-    },
-    {
-      "name": "time",
-      "cmd": "echo %time%"
-    },
-    {
-      "name": "blabl",
-      "cmd": "echo hello + %time%"
+      "cmd": ""
     }
   ]
 }

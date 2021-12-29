@@ -7,7 +7,8 @@
     "setup-win": "start ./tasks/setup.sh",
     "setup-linux": "source ./tasks/setup.sh",
     "build": "tsc -p .",
-    "start": "node ./bin/index.js"
+    "start": "node ./bin/index.js",
+    "server": "node ./web/server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@types/node": "^17.0.5"
   },
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
   }
 }

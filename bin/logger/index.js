@@ -26,14 +26,28 @@ const methods = __importStar(require("./methods"));
 const config_1 = __importDefault(require("./config"));
 class Logger {
     constructor(config_ = config_1.default) {
+        this.initStream = methods.initStream;
         this.logData = methods.logData.bind(this);
         this.log = methods.log.bind(this);
         this.update = methods.update.bind(this);
-        this.stream = [];
+        this.write = methods.write.bind(this);
+        this.makeHeader = methods.makeHeader.bind(this);
+        this.genFullPath = methods.genFullPath.bind(this);
+        this.genFileName = methods.genFileName.bind(this);
+        this.makeJSON = methods.makeJSON.bind(this);
         this.config = config_;
+        this.logname = config_.env.LOGNAME;
+        this.path = Logger.parsePath(config_.env.WRITEPATH);
+        let data = this.initStream();
+        this.stream = data.csv;
+        this.header = data.header;
     }
 }
 exports.default = Logger;
 Logger.config = config_1.default;
+Logger.parsePath = methods.parsePath;
 Logger.getTimeString = methods.getTimeString;
 Logger.getDateString = methods.getDateString;
+Logger.genID = methods.genID;
+Logger.checkLength = methods.checkLength;
+Logger.error = methods.error;
