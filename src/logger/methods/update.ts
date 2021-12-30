@@ -11,16 +11,19 @@ function delay(time: number) {
 
 async function update(this: Logger) {
   await delay(+this.config.freq);
-  let ans: string[] = [];
+
   this.chartsConfig = {};
+  let ans: string[] = [];
   for (let chart in this.config.charts) {
     this.chartsConfig[chart] = [];
+
     for (let i = 0; i < this.config.charts[chart].length; i++) {
       let command = this.config.charts[chart][i];
       const { stdout } = await exec_(command.cmd);
       ans.push(stdout.replace('\n', ''));
       this.chartsConfig[chart].push(command.name)
     }
+
   }
   this.logData(ans);
   this.write();

@@ -4,21 +4,21 @@
     "temperature": [
       {
         "name": "cputemp",
-        "cmd": "echo %random%"
+        "cmd": "echo 1"
       },
       {
         "name": "gputemp",
-        "cmd": "echo %random%"
+        "cmd": "echo 2"
       }
     ],
     "clock": [
       {
         "name": "cpuclock",
-        "cmd": "echo %random%"
+        "cmd": "echo 3"
       },
       {
         "name": "gpuclock",
-        "cmd": "echo %random%"
+        "cmd": "echo 4"
       }
     ]
   }

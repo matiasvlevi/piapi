@@ -38,8 +38,8 @@ function delay(time) {
 function update() {
     return __awaiter(this, void 0, void 0, function* () {
         yield delay(+this.config.freq);
-        let ans = [];
         this.chartsConfig = {};
+        let ans = [];
         for (let chart in this.config.charts) {
             this.chartsConfig[chart] = [];
             for (let i = 0; i < this.config.charts[chart].length; i++) {
