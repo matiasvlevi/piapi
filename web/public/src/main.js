@@ -28,17 +28,17 @@ function init(chartData, n) {
   let i = 0;
   for (let log in chartData) {
     let clr = randomColor(i);
+    let values = chartData[log];
     let obj = {
       label: log,
       backgroundColor: clr,
       borderColor: clr,
-      data: chartData[log],
+      data: (n > 100) ? values.splice(values.length - 100, 100) : values
     }
     d.push(obj);
     i++;
   }
-  let a = makeArray(n)
-
+  let a = (n > 100) ? makeArray(100) : makeArray(n);
 
   const data = {
     labels: a,
@@ -47,10 +47,13 @@ function init(chartData, n) {
   return data;
 }
 
-function addData(chart, label, data, i) {
+function addData(chart, label, data) {
+  console.log(chart.data.datasets)
   chart.data.labels.push(label);
-  chart.data.datasets[i].data.push(data);
-  chart.update();
+  chart.data.datasets.forEach((dataset, i) => {
+    dataset.data.push(data[i]);
+  });
+
 }
 
 function main(json) {
@@ -93,17 +96,22 @@ function main(json) {
 
 function f() {
   fetch('../temp.json').then(res => res.json()).then(json => {
-    if (json.length > oldlength) {
+    if (json.length > oldlength && json.length <= 100) {
       let j = 0;
       for (let chart in json.data) {
-        let i = 0;
+        let values = [];
+
         for (let line in json.data[chart]) {
-          let values = json.data[chart][line];
-          addData(charts[j], values.length - 1, values[values.length - 1], i)
-          i++
+          let l = json.data[chart][line];
+          values.push(l[l.length - 1])
         }
+        console.log(values);
+        addData(charts[j], json.length, values)
         j++;
       }
+      charts.forEach(chart => {
+        chart.update()
+      });
       console.log('Updating...');
       oldlength = json.length;
     }

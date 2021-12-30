@@ -16,6 +16,7 @@ export function initStream(this: Logger) {
     let lines = file.split('\n');
     header = lines.splice(0, 1)[0].split(',');
     csv = lines.map(x => x.split(',').map(y => y.replace('\r', '')));
+
     let valid = Logger.checkLength(csv, this.getNbCol());
     if (!valid) {
       Logger.error('File tried loading a csv with some missing values');
