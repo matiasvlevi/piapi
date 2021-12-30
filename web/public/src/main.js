@@ -86,8 +86,8 @@ function main(json) {
       config
     );
 
-    chart_.canvas.parentNode.style.height = window.innerHeight / 2;
-    chart_.canvas.parentNode.style.width = window.innerWidth / 2;
+    chart_.canvas.parentNode.style.height = window.innerHeight / 2.4;
+    chart_.canvas.parentNode.style.width = window.innerWidth / 2.4;
     charts.push(chart_);
     i++;
   }
