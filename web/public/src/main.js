@@ -3,12 +3,21 @@ fetch('../temp.json').then(res => res.json()).then(x => {
   oldlength = x.length;
   main(x)
 });
+
+const max = 100;
 const chart = 'myChart1';
 const charts = [];
 function makeArray(n) {
   let ans = [];
+  let t = 5;
   for (let i = 0; i < n; i++) {
-    ans.push(i)
+    let v = ((max * t)) - ((i * t));
+    if (i / 5 === Math.floor(i / 5)) {
+      ans.push(`-${v} sec`)
+    } else {
+      ans.push(``)
+    }
+
   }
   return ans;
 }
@@ -33,12 +42,12 @@ function init(chartData, n) {
       label: log,
       backgroundColor: clr,
       borderColor: clr,
-      data: (n > 100) ? values.splice(values.length - 100, 100) : values
+      data: (n > max) ? values.splice(values.length - max, max) : values
     }
     d.push(obj);
     i++;
   }
-  let a = (n > 100) ? makeArray(100) : makeArray(n);
+  let a = makeArray(max)
 
   const data = {
     labels: a,
@@ -48,26 +57,34 @@ function init(chartData, n) {
 }
 
 function addData(chart, label, data) {
-  console.log(chart.data.datasets)
-  chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset, i) => {
     dataset.data.push(data[i]);
   });
+}
 
+function removeData(chart) {
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.splice(0, 1);
+  });
 }
 
 function main(json) {
   window.piapi = json;
 
   let i = 0;
-  console.log(json)
   for (let chart in json.data) {
     const data = init(json.data[chart], json.length);
-    console.log(data)
     const config = {
       type: 'line',
       data: data,
-      options: {}
+      options: {
+        scales: {
+          y: { // defining min and max so hiding the dataset does not change scale range
+            min: 0,
+            max: 100
+          }
+        }
+      }
     };
     let c = document.createElement('canvas');
     let p = document.createElement('div');
@@ -96,7 +113,7 @@ function main(json) {
 
 function f() {
   fetch('../temp.json').then(res => res.json()).then(json => {
-    if (json.length > oldlength && json.length <= 100) {
+    if (json.length > oldlength) {
       let j = 0;
       for (let chart in json.data) {
         let values = [];
@@ -105,8 +122,11 @@ function f() {
           let l = json.data[chart][line];
           values.push(l[l.length - 1])
         }
-        console.log(values);
-        addData(charts[j], json.length, values)
+        addData(charts[j], json.length, values);
+
+        if (json.length > max) {
+          removeData(charts[j]);
+        }
         j++;
       }
       charts.forEach(chart => {

@@ -1,7 +1,7 @@
 import Logger from '../index'
 
 export function makeJSON(this: Logger) {
-  // console.log(this.stream);
+
   let header = this.makeHeader();
   let length: number = this.stream.length;
   let data: any = {};
