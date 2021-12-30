@@ -8,7 +8,8 @@
     "setup-linux": "source ./tasks/setup.sh",
     "build": "tsc -p .",
     "start": "node ./bin/index.js",
-    "server": "node ./web/server.js"
+    "server": "node ./web/server.js",
+    "piconfig": "source ./tasks/init.sh"
   },
   "keywords": [],
   "author": "",
