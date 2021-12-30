@@ -1,13 +1,25 @@
 {
   "freq": "5000",
-  "logs": [
-    {
-      "name": "cputemp",
-      "cmd": ""
-    },
-    {
-      "name": "gputemp",
-      "cmd": ""
-    }
-  ]
+  "charts": {
+    "temperature": [
+      {
+        "name": "cputemp",
+        "cmd": "echo %random%"
+      },
+      {
+        "name": "gputemp",
+        "cmd": "echo %random%"
+      }
+    ],
+    "clock": [
+      {
+        "name": "cpuclock",
+        "cmd": "echo %random%"
+      },
+      {
+        "name": "gpuclock",
+        "cmd": "echo %random%"
+      }
+    ]
+  }
 }

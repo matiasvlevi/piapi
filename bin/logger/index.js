@@ -35,12 +35,14 @@ class Logger {
         this.genFullPath = methods.genFullPath.bind(this);
         this.genFileName = methods.genFileName.bind(this);
         this.makeJSON = methods.makeJSON.bind(this);
+        this.getNbCol = methods.getNbCol.bind(this);
         this.config = config_;
         this.logname = config_.env.LOGNAME;
         this.path = Logger.parsePath(config_.env.WRITEPATH);
         let data = this.initStream();
         this.stream = data.csv;
         this.header = data.header;
+        this.chartsConfig = {};
     }
 }
 exports.default = Logger;

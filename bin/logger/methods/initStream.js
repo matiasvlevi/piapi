@@ -40,7 +40,7 @@ function initStream() {
         let lines = file.split('\n');
         header = lines.splice(0, 1)[0].split(',');
         csv = lines.map(x => x.split(',').map(y => y.replace('\r', '')));
-        let valid = index_1.default.checkLength(csv, this.config.logs.length);
+        let valid = index_1.default.checkLength(csv, this.getNbCol());
         if (!valid) {
             index_1.default.error('File tried loading a csv with some missing values');
             return {

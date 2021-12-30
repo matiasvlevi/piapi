@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.makeJSON = exports.initStream = exports.makeHeader = exports.write = exports.log = exports.update = exports.logData = exports.error = exports.checkLength = exports.genFileName = exports.genFullPath = exports.getDateString = exports.getTimeString = exports.parsePath = exports.genID = void 0;
+exports.getNbCol = exports.makeJSON = exports.initStream = exports.makeHeader = exports.write = exports.log = exports.update = exports.logData = exports.error = exports.checkLength = exports.genFileName = exports.genFullPath = exports.getDateString = exports.getTimeString = exports.parsePath = exports.genID = void 0;
 // Static
 var genID_1 = require("./methods/genID");
 Object.defineProperty(exports, "genID", { enumerable: true, get: function () { return genID_1.genID; } });
@@ -33,3 +33,5 @@ var initStream_1 = require("./methods/initStream");
 Object.defineProperty(exports, "initStream", { enumerable: true, get: function () { return initStream_1.initStream; } });
 var makeJSON_1 = require("./methods/makeJSON");
 Object.defineProperty(exports, "makeJSON", { enumerable: true, get: function () { return makeJSON_1.makeJSON; } });
+var getNbCol_1 = require("./methods/getNbCol");
+Object.defineProperty(exports, "getNbCol", { enumerable: true, get: function () { return getNbCol_1.getNbCol; } });

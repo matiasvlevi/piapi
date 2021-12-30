@@ -7,7 +7,7 @@ exports.genFileName = void 0;
 const __1 = __importDefault(require(".."));
 function genFileName() {
     let id = __1.default.genID();
-    let name = `${this.logname}-${this.config.logs.length}-${id}.csv`;
+    let name = `${this.logname}-${this.config.charts.length}-${id}.csv`;
     return name;
 }
 exports.genFileName = genFileName;

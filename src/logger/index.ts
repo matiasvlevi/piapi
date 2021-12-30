@@ -8,6 +8,7 @@ export default class Logger {
   path: string;
   logname: string;
   header: string[];
+  chartsConfig: any;
 
   constructor(config_: any = config) {
     this.config = config_;
@@ -16,6 +17,7 @@ export default class Logger {
     let data = this.initStream();
     this.stream = data.csv;
     this.header = data.header;
+    this.chartsConfig = {};
   }
 
   static config = config;
@@ -36,4 +38,5 @@ export default class Logger {
   public genFullPath = methods.genFullPath.bind(this);
   public genFileName = methods.genFileName.bind(this);
   public makeJSON = methods.makeJSON.bind(this);
+  public getNbCol = methods.getNbCol.bind(this);
 }

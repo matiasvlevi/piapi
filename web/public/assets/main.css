@@ -4,9 +4,9 @@ body {
 }
 
 .plot {
-  max-width: 90%;
-  max-height: 90%;
-  margin:auto;
+  max-width: 80%;
+  max-height: 40%;
+  margin-bottom:5%;
   width:fit-content;
   height:fit-content;
 }
