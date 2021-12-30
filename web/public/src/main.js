@@ -1,4 +1,8 @@
-fetch('../temp.json').then(res => res.json()).then(x => main(x));
+let oldlength = 0;
+fetch('../temp.json').then(res => res.json()).then(x => {
+  oldlength = x.length;
+  main(x)
+});
 const chart = 'myChart1';
 const charts = [];
 function makeArray(n) {
@@ -43,11 +47,9 @@ function init(chartData, n) {
   return data;
 }
 
-function addData(chart, label, data) {
+function addData(chart, label, data, i) {
   chart.data.labels.push(label);
-  chart.data.datasets.forEach((dataset) => {
-    dataset.data.push(data);
-  });
+  chart.data.datasets[i].data.push(data);
   chart.update();
 }
 
@@ -66,38 +68,47 @@ function main(json) {
     };
     let c = document.createElement('canvas');
     let p = document.createElement('div');
+    let h = document.createElement('h2');
+    h.textContent = chart;
     p.setAttribute('class', 'plot');
     c.setAttribute('id', `myChart${i}`);
+    p.appendChild(h);
     p.appendChild(c);
     document.body.appendChild(p);
 
     let canvas = document.getElementById(`myChart${i}`);
-    // canvas.height = window.innerHeight / 2;
-    // canvas.width = window.innerWidth / 2;
-    //
+
     let chart_ = new Chart(
       canvas.getContext('2d'),
       config
     );
-    //chart_.canvas.parentNode.style = "padding-bottom: 5%;"
+
     chart_.canvas.parentNode.style.height = window.innerHeight / 2;
     chart_.canvas.parentNode.style.width = window.innerWidth / 2;
     charts.push(chart_);
     i++;
   }
-  //setTimeout(f, 5000);
+  setTimeout(f, 3000);
 }
 
-// function f() {
-//   fetch('../temp.json').then(res => res.json()).then(json => {
-//     for (let log in json.data) {
-//       let values = json.data[log];
-//       addData(window.myChart, values.length - 1, values[values.length - 1])
-//       console.log(log, values[values.length - 1])
-//     }
-//     console.log('Updating...')
-//     setTimeout(f, 5000);
-//   });
+function f() {
+  fetch('../temp.json').then(res => res.json()).then(json => {
+    if (json.length > oldlength) {
+      let j = 0;
+      for (let chart in json.data) {
+        let i = 0;
+        for (let line in json.data[chart]) {
+          let values = json.data[chart][line];
+          addData(charts[j], values.length - 1, values[values.length - 1], i)
+          i++
+        }
+        j++;
+      }
+      console.log('Updating...');
+      oldlength = json.length;
+    }
+    setTimeout(f, 3000);
+  });
 
-// }
+}
 

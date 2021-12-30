@@ -10,6 +10,12 @@ body {
   width:fit-content;
   height:fit-content;
 }
+canvas {
+  display:inline-block
+}
+h2 {
+  margin: 2rem;
+}
 
 .grid {
   display:flex;
