@@ -98,7 +98,12 @@ npm run server
 
 ## Web App preview
 
+The app uses neofetch to get the device's info. 
+
 <img src="https://i.ibb.co/VHj15Ts/main.png" width="750px"></img>
+
+Your specified charts in `.apirc` are displayed below
+
 <img src="https://i.ibb.co/wzWjR7F/dashboard.png" width="750px"></img>
 
 
