@@ -2,13 +2,13 @@
 
 ServerFecth allows you to log values and display them on a web app.
 
-### Requirements
+## Requirements
 
 * Node & npm
 * Typescript (`npm i -g typescript`)
 * neofetch (optional)
 
-### Install
+## Install
 
 Clone the repo
 
@@ -24,7 +24,7 @@ npm run config
 
 This just created a plain `.apirc` and `.env` file.
 
-#### .apirc
+### .apirc
 
 ```json
 {
@@ -48,9 +48,12 @@ This just created a plain `.apirc` and `.env` file.
 Multiple datasets can be added in one chart by adding to the corresponding `data` property.
 Multiple charts can be added by adding to the `charts` object
 
+
+> NOTE: you can also use `npm run piconfig` for a raspbian default config, displaying cpu/core clocks, temperaure and memory.
+
 <br/>
 
-#### .env
+### .env
 
 
 ```env
@@ -61,7 +64,7 @@ JSONNAME="temp"
 WEBPORT="3000"
 ```
 
-The only value needed is
+The only value to modify is
 
 * `WRITEPATH`: Where to write the logs?
 
