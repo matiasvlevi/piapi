@@ -79,6 +79,7 @@ function removeData(chart) {
 function getOS(neofetchstr) {
   let line = neofetchstr.match(/OS:.*/gm)[0].toLocaleLowerCase();
   line = line.replace('linux ', '');
+  line = line.replace(' MATE', 'mate')
   let osname = line.split(' ')[1];
   if (osname.includes('/')) {
     osname = osname.split('/')[0];
