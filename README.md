@@ -22,8 +22,10 @@ git clone https://github.com/matiasvlevi/serverfetch.git
 
 Install dependencies, and required configuration files
 
-```
-npm run config
+```sh
+npm run config-win 
+# or
+npm run config-linux
 ```
 
 This just created a plain `.apirc` and `.env` file.
