@@ -2,11 +2,15 @@
 
 ServerFecth allows you to log values and display them on a web app.
 
+<br/>
+
 ## Requirements
 
 * Node & npm
 * Typescript (`npm i -g typescript`)
 * neofetch (optional)
+
+<br/>
 
 ## Install
 
