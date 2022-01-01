@@ -4,7 +4,7 @@
 
 > Do not use this software for your own professionnal server
 
-ServerFecth allows you to log values and display them on a web app.
+ServerFetch allows you to log values and display them on a web app.
 
 <br/>
 
