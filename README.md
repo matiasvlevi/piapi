@@ -59,7 +59,7 @@ Multiple datasets can be added in one chart by adding to the corresponding `data
 Multiple charts can be added by adding to the `charts` object
 
 
-> NOTE: you can also use `npm run piconfig` for a raspbian default config, which logs cpu/core clocks, temperaure and memory (using vcgencmd).
+> NOTE: you can also use `npm run piconfig` for a raspbian default config, which logs cpu/core clocks, temperature and memory (using vcgencmd).
 
 <br/>
 
