@@ -9,6 +9,7 @@ export default class Logger {
   logname: string;
   header: string[];
   chartsConfig: any;
+  fetch: string;
 
   constructor(config_: any = config) {
     this.config = config_;
@@ -18,6 +19,7 @@ export default class Logger {
     this.stream = data.csv;
     this.header = data.header;
     this.chartsConfig = {};
+    this.fetch = '';
   }
 
   static config = config;

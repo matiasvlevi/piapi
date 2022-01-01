@@ -43,6 +43,7 @@ class Logger {
         this.stream = data.csv;
         this.header = data.header;
         this.chartsConfig = {};
+        this.fetch = '';
     }
 }
 exports.default = Logger;

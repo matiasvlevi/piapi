@@ -29,7 +29,7 @@ function randomColor(i) {
   let c = [r, g, b];
   c[i % 3] -= Math.random() * 100 + 155;
   c[i % 3] = Math.abs(c[i % 3]);
-  return `rgb(${r},${g},${b})`
+  return `rgba(${r},${g},${b})`
 }
 
 function init(chartData, n) {
@@ -42,6 +42,7 @@ function init(chartData, n) {
       label: log,
       backgroundColor: clr,
       borderColor: clr,
+      color: `#fff`,
       data: (n > max) ? values.splice(values.length - max, max) : values
     }
     d.push(obj);
@@ -56,7 +57,14 @@ function init(chartData, n) {
   return data;
 }
 
-function addData(chart, label, data) {
+function loadLogo(os) {
+  let path = `./assets/logos/${os.toLocaleLowerCase()}.svg`;
+  let logo = document.getElementById('distrologo');
+  logo.src = path;
+  logo.style = 'display:auto';
+}
+
+function addData(chart, data) {
   chart.data.datasets.forEach((dataset, i) => {
     dataset.data.push(data[i]);
   });
@@ -68,74 +76,110 @@ function removeData(chart) {
   });
 }
 
+function getOS(neofetchstr) {
+  let line = neofetchstr.match(/OS:.*/gm)[0].toLocaleLowerCase();
+  line = line.replace('linux ', '');
+  let osname = line.split(' ')[1];
+  if (osname.includes('/')) {
+    osname = osname.split('/')[0];
+  }
+  return osname;
+}
+
+function loadNeofetch(neofetch) {
+  document.getElementById('neofetchBlock').textContent = neofetch;
+}
+
 function main(json) {
+
+
+  loadNeofetch(json.fetch);
+  let os = getOS(json.fetch);
+  loadLogo(os);
+
   window.piapi = json;
 
   let i = 0;
   for (let chart in json.data) {
-    const data = init(json.data[chart], json.length);
+    const data = init(json.data[chart].data, json.length);
+
+    // TODO : Replace 'bounds' with a variable key, which iterates through all the desired keys. Also add a conversion between keys ex:(bounds, scale)
+    let opt = {
+      // responsive: false,
+      // maintainAspectRatio: false
+    };
+    if (Object.keys(json.data[chart]).includes('bounds')) {
+      let bounds = json.data[chart]['bounds'];
+      console.log(bounds)
+      opt['scale'] = {
+        x: bounds[0],
+        y: bounds[1]
+      };
+    }
     const config = {
       type: 'line',
       data: data,
-      options: {
-        scales: {
-          y: { // defining min and max so hiding the dataset does not change scale range
-            min: 0,
-            max: 100
-          }
-        }
-      }
+      options: opt
     };
-    let c = document.createElement('canvas');
-    let p = document.createElement('div');
-    let h = document.createElement('h2');
-    h.textContent = chart;
-    p.setAttribute('class', 'plot');
-    c.setAttribute('id', `myChart${i}`);
-    p.appendChild(h);
-    p.appendChild(c);
-    document.body.appendChild(p);
 
-    let canvas = document.getElementById(`myChart${i}`);
+    let graphContainer = document.createElement('div');
+    graphContainer.setAttribute('class', 'container');
+
+    let chartTitle = document.createElement('h3');
+    chartTitle.textContent = chart;
+
+    let chartName = `chart${i}`;
+    let canvasplot = document.createElement('canvas');
+    let plot = document.createElement('div');
+
+    plot.setAttribute('class', 'plot');
+    canvasplot.setAttribute('id', `chart${i}`);
+    plot.appendChild(canvasplot);
+    graphContainer.appendChild(chartTitle);
+    graphContainer.appendChild(plot);
+    document.querySelector('.grid').appendChild(graphContainer);
+
+    let canvas = document.getElementById(chartName);
 
     let chart_ = new Chart(
       canvas.getContext('2d'),
       config
     );
 
-    chart_.canvas.parentNode.style.height = window.innerHeight / 2.4;
-    chart_.canvas.parentNode.style.width = window.innerWidth / 2.4;
     charts.push(chart_);
     i++;
   }
-  setTimeout(f, 3000);
+  setTimeout(UpdateGraph, 5000);
 }
 
-function f() {
+
+// UpdateGraph
+function UpdateGraph() {
   fetch('../temp.json').then(res => res.json()).then(json => {
+    loadNeofetch(json.fetch);
     if (json.length > oldlength) {
       let j = 0;
       for (let chart in json.data) {
         let values = [];
-
-        for (let line in json.data[chart]) {
-          let l = json.data[chart][line];
+        let keys = Object.keys(json.data[chart].data);
+        for (let i = 0; i < keys.length; i++) {
+          let l = json.data[chart].data[keys[i]];
           values.push(l[l.length - 1])
         }
-        addData(charts[j], json.length, values);
-
+        //console.log(values)
+        addData(charts[j], values);
         if (json.length > max) {
           removeData(charts[j]);
         }
         j++;
       }
-      charts.forEach(chart => {
+      charts.forEach((chart) => {
         chart.update()
       });
       console.log('Updating...');
       oldlength = json.length;
     }
-    setTimeout(f, 3000);
+    setTimeout(UpdateGraph, 5000);
   });
 
 }

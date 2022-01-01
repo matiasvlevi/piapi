@@ -1,3 +1,4 @@
 # piapi
 
-Log system values and display them on a web server.
+Log system values and display them on a web application.
+

@@ -4,7 +4,7 @@ exports.getNbCol = void 0;
 function getNbCol() {
     let sum = 0;
     for (let chart in this.config.charts) {
-        sum += this.config.charts[chart].length;
+        sum += this.config.charts[chart].data.length;
     }
     return sum;
 }

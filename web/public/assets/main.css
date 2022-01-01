@@ -1,23 +1,169 @@
+
+
+:root {
+  --light: #EEEEEE;
+  --main: #EEEEEE;
+  --mainTransparent: rgba(238, 238, 238, 0.35);
+  --dark: #111;
+  --blank: #00C1D4;
+  --shadow: #CCC;
+  --violet: #512D6D;
+  --red: #F8485E;
+}
+
+
 html,
 body {
   margin: 0px;
+
+  background-color: var(--light);
+}
+header {
+  min-height: 13%;
+  background-color: var(--light);
+  box-shadow: 0px 6px 18px var(--shadow); 
+  margin-bottom: 4rem;
+}
+main {
+  width: 90%;
+  margin:auto
+}
+.grid {
+  display:inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap:4%;
+  align-items: stretch;
 }
 
+.container {
+  flex-grow: 1;
+  min-width: fit-content;
+  min-height: fit-content;
+  padding: 2rem;
+  border-radius: 28px;
+  background-color: var(--mainTransparent);
+  box-shadow: 0px 6px 18px var(--shadow);  
+  margin-bottom: 3rem;
+}
 .plot {
-  max-width: 80%;
-  max-height: 40%;
-  margin-bottom:5%;
-  width:fit-content;
-  height:fit-content;
+  position: relative;
+  top:0px;
+  left: 0px;
+  display:flex;
+  justify-content: center;
 }
 canvas {
-  display:inline-block;
-}
-h2 {
-  margin: 2rem;
+  max-height: 300px;
+  max-width: 400px;
+
+  /* margin-top: auto;
+  margin-bottom: auto; */
 }
 
-.grid {
+
+
+.title {
+  margin-left: 6%;
+  padding-top: 1rem;
   display:flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 8rem
+}
+
+h2 {
+  margin-top: 0.5rem;
+  margin: 1rem;
+ 
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.45em;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+}
+
+button {
+  position: relative;
+  border: none;
+  padding: 1em;
+  font-family:  'Poppins', sans-serif;
+  background-color: var(--light);
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px var(--shadow);
+}
+button:hover {
+  animation: buttonAnim 0.4s forwards;
+  background-color: var(--dark);
+  color: var(--light);
+  cursor: pointer;
+
+}
+
+@keyframes buttonAnim {
+  100% {
+    background-color: var(--dark);
+    color: var(--light);
+    cursor: pointer;
+    transform: translate(0px,12px);
+  }
+}
+
+.buttonGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: fit-content;
+  margin-top: 2rem;
+}
+
+.metainfo {
+  display:flex;
+  flex:nowrap;
+  gap: 2rem;
+}
+
+.spacer {
+  min-height: 2%;
+  min-width: 100%;
+}
+
+.codeContainer {
+  min-width: 12em;
+  min-height: 12em;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 12px;
+  background-color: #DDD;
+  padding: 1rem;
+}
+
+#distrologo {
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+#colorText {
+  color: var(--red)
+}
+
+p {
+  max-width: 24em;
 }
