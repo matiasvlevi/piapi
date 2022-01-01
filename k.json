@@ -1,0 +1,13 @@
+{
+  "freq": "5000",
+  "charts": {
+    "temperature": {
+      "data": [
+        {
+          "name": "CPU",
+          "cmd": "YOUR_SHELL_COMMAND_HERE"
+        }
+      ]
+    }
+  }
+}

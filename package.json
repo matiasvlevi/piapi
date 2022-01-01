@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup-win": "start ./tasks/setup.sh",
-    "setup-linux": "source ./tasks/setup.sh",
     "build": "tsc -p .",
-    "start": "node ./bin/index.js",
+    "logger": "node ./bin/index.js",
     "server": "node ./web/server.js",
-    "piconfig": "source ./tasks/init.sh"
+    "config-win": "start ./tasks/init.sh",
+    "config-linux": "source ./tasks/init.sh",
+    "piconfig": "source ./tasks/raspbian_default.sh"
   },
   "keywords": [],
   "author": "",
