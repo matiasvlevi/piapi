@@ -7,18 +7,16 @@ fetch('../temp.json').then(res => res.json()).then(x => {
 const max = 100;
 const chart = 'myChart1';
 const charts = [];
-function makeArray(n) {
+function makeArray(n, freq = 5000) {
   let ans = [];
-  // let t = 5;
+  let maxtime = freq * n;
   for (let i = 0; i < n; i++) {
-    // let v = ((max * t)) - ((i * t));
-    // if (i / 5 === Math.floor(i / 5)) {
-    //   ans.push(`-${v} sec`)
-    // } else {
-    //   ans.push(``)
-    // }
-    ans.push(i)
-
+    let v = ((maxtime) - ((i * freq))) / 1000;
+    if (i / 5 === Math.floor(i / 5)) {
+      ans.push(`-${v} sec`)
+    } else {
+      ans.push(`-${v} sec`)
+    }
   }
   return ans;
 }
@@ -78,8 +76,12 @@ function loadLogo(os) {
   logo.style = 'display:auto';
 }
 
+function updateLabels(chart, n) {
+  chart.data.labels = makeArray(n);
+}
+
 function addData(chart, data) {
-  chart.data.datasets.labels = makeArray(data.length);
+
   chart.data.datasets.forEach((dataset, i) => {
     dataset.data.push(data[i]);
   });
@@ -188,9 +190,12 @@ function main(json) {
   let i = 0;
   for (let chart in json.data) {
     const data = init(json.data[chart].data, json.length);
+    let labelsLength = (json.length > max) ? max : json.length;
+    let d = 6 - Math.floor(((4 * labelsLength) / max));
+    console.log(d)
     let opt = {
-      pointRadius: 1,
-      pointHoverRadius: 1,
+      pointRadius: d,
+      pointHoverRadius: 5,
       maintainAspectRatio: true
     };
     if (Object.keys(json.data[chart]).includes('bounds')) {
@@ -230,11 +235,22 @@ function UpdateGraph() {
           let l = json.data[chart].data[keys[i]];
           values.push(l[l.length - 1])
         }
-        //console.log(values)
+
+        let labelsLength = charts[j].data.datasets[0].data.length;
+
+
+
+
+
+        if (json.length <= max) {
+          updateLabels(charts[j], (labelsLength > max) ? max : labelsLength);
+        }
         addData(charts[j], values);
         if (json.length > max) {
           removeData(charts[j]);
         }
+
+
         j++;
       }
       charts.forEach((chart) => {
