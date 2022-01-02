@@ -1,5 +1,4 @@
 import Logger from '../index';
-import * as fs from 'fs';
 
 export function write(this: Logger) {
   let data = this.stream.map(x => x.map(y => y.replace('\r', '')).join(','));
@@ -7,7 +6,12 @@ export function write(this: Logger) {
   let csv = header.concat(data).join('\n');
   let json = this.makeJSON();
 
-  let path = this.genFullPath().replace('.csv', '');
-  fs.writeFileSync(`${path}.csv`, csv, 'utf8');
-  fs.writeFileSync(`./web/public/${this.config.env.JSONNAME}.json`, json, 'utf8');
+  let path = this.genFullPath();
+
+  // System logs
+  Logger.writeFile(`${path}.csv`, csv);
+  Logger.writeFile(`${path}.log`, this.logstream);
+
+  // Web data
+  Logger.writeFile(`./web/public/temp.json`, json);
 }

@@ -1,4 +1,5 @@
 // Static
+export { readFile, writeFile, fileExists } from './methods/fsBindings'
 export { genID } from './methods/genID'
 export { parsePath } from './methods/parsePath'
 export { getTimeString } from './methods/getTimeString'
@@ -7,6 +8,8 @@ export { genFullPath } from './methods/genFullPath'
 export { genFileName } from './methods/genFileName'
 export { checkLength } from './methods/checkLength'
 export { error } from './methods/error'
+export { exec } from './methods/exec'
+export { removeColors } from './methods/removeColors'
 
 // prototype
 export { logData } from './methods/logData'

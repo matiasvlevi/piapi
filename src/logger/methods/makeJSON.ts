@@ -28,11 +28,9 @@ export function makeJSON(this: Logger) {
     if (Object.keys(this.chartsConfig[chart]).includes('bounds')) {
       data[chart]['bounds'] = this.chartsConfig[chart]['bounds'];
     }
-
   }
 
-
-
+  // JSON sent to the Web App 
   let json = JSON.stringify({
     header,
     data,

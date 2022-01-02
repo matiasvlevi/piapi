@@ -9,14 +9,15 @@ const chart = 'myChart1';
 const charts = [];
 function makeArray(n) {
   let ans = [];
-  let t = 5;
+  // let t = 5;
   for (let i = 0; i < n; i++) {
-    let v = ((max * t)) - ((i * t));
-    if (i / 5 === Math.floor(i / 5)) {
-      ans.push(`-${v} sec`)
-    } else {
-      ans.push(``)
-    }
+    // let v = ((max * t)) - ((i * t));
+    // if (i / 5 === Math.floor(i / 5)) {
+    //   ans.push(`-${v} sec`)
+    // } else {
+    //   ans.push(``)
+    // }
+    ans.push(i)
 
   }
   return ans;
@@ -48,7 +49,7 @@ function init(chartData, n) {
     d.push(obj);
     i++;
   }
-  let a = makeArray(max)
+  let a = (n > max) ? makeArray(max) : makeArray(n);
 
   const data = {
     labels: a,
@@ -78,6 +79,7 @@ function loadLogo(os) {
 }
 
 function addData(chart, data) {
+  chart.data.datasets.labels = makeArray(data.length);
   chart.data.datasets.forEach((dataset, i) => {
     dataset.data.push(data[i]);
   });
@@ -208,7 +210,6 @@ function main(json) {
     };
 
     addDomGraph(chart, i, config);
-
     i++;
   }
   setTimeout(UpdateGraph, 5000);

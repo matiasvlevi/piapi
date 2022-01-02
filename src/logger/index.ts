@@ -10,6 +10,8 @@ export default class Logger {
   header: string[];
   chartsConfig: any;
   fetch: string;
+  fileIndex: number;
+  logstream: string;
 
   constructor(config_: any = config) {
     this.config = config_;
@@ -20,6 +22,8 @@ export default class Logger {
     this.header = data.header;
     this.chartsConfig = {};
     this.fetch = '';
+    this.fileIndex = 0;
+    this.logstream = '';
   }
 
   static config = config;
@@ -30,8 +34,13 @@ export default class Logger {
   public static genID = methods.genID;
   public static checkLength = methods.checkLength;
   public static error = methods.error;
+  public static exec = methods.exec;
+  public static readFile = methods.readFile;
+  public static writeFile = methods.writeFile;
+  public static fileExists = methods.fileExists;
+  public static removeColors = methods.removeColors;
 
-  public initStream = methods.initStream;
+  public initStream = methods.initStream.bind(this);
   public logData = methods.logData.bind(this);
   public log = methods.log.bind(this);
   public update = methods.update.bind(this);

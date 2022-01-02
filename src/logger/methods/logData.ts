@@ -1,6 +1,12 @@
 
 import Logger from "../index";
 
+
+/**
+ * Log latest fetched data in the console.
+ * @method logData
+ * @param values Array the array of values to be printed in the console.
+ */
 export function logData(this: Logger, values: string[]): void {
   this.stream.push(values.map(y => y.replace('\r', '')));
   let ans: string[] = [];
