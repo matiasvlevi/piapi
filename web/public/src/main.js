@@ -71,7 +71,7 @@ function downloadFile(filename, text) {
 }
 
 function loadLogo(os) {
-  let path = `./assets/logos/${os.toLocaleLowerCase()}.svg`;
+  let path = `https://raw.githubusercontent.com/matiasvlevi/serverfetch/main/web/public/assets/logos/${os.toLocaleLowerCase()}.svg`;
   let logo = document.getElementById('distrologo');
   logo.src = path;
   logo.style = 'display:auto';

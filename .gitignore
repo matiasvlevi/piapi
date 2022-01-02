@@ -3,3 +3,4 @@ node_modules
 .apirc
 .env
 /bin
+/web/public/temp.json
