@@ -28,6 +28,8 @@ Multiple charts can be added by adding to the `charts` object
 
 ## Example
 
+Logging a sample value, in this case, a constant 4.
+
 ```json
 {
   "freq": "5000",
@@ -46,6 +48,8 @@ Multiple charts can be added by adding to the `charts` object
 
 #### logs
 
+Logs are displayed in the console & written in the specified `.env` paths. 
+
 ```log
 [2/0/2022] <17:09> mySampleValue: 4
 [2/0/2022] <17:09> mySampleValue: 4
@@ -59,4 +63,25 @@ Multiple charts can be added by adding to the `charts` object
 
 #### Web app
 
-<img src="./imgs/mySampleValue.png" width="650px"/>
+The web application generates graphs which update in real time.
+
+<img src="./imgs/mySampleValue.png" width="450px"/>
+
+
+<br/>
+
+#### Adding Y-value bounds
+
+```json
+"Sample": {
+  "data": [
+    {
+      "name": "mySampleValue",
+      "cmd": "echo 4"
+    }
+  ],
+  "bounds": [0, 10]
+}
+```
+
+Adding the `bounds` property will apply the bounds on the corresponding graph.
