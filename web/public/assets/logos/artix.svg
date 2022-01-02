@@ -1,0 +1,20 @@
+<svg width="300px" height="300px" viewBox="0 0 6667 4000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+  <g xmlns="http://www.w3.org/2000/svg" id="Emblem" transform="scale(2.6, 2.6) translate(-60, -1020)">
+    <path id="Base" d="M902.639,1723.96l-541.008,1107.2l1599.38,-662.494l-1058.37,-444.702Zm1173.72,536.796l277.133,567.669l-784.968,-275.435l507.835,-292.234Zm-720.011,-1469.23l614.565,1258.44l-967.49,-538.5l352.925,-719.937Z" style="fill:#0d89ae;"/>
+    <g id="_3" xmlns:serif="http://www.serif.com/" serif:id="3">
+      <path d="M2076.36,2260.76l277.133,567.669l-458.27,-307.671l181.137,-259.998Z" style="fill:url(#_Linear1);"/>
+      <path d="M2076.36,2260.76l-507.835,292.234l326.698,-32.236l181.137,-259.998Z" style="fill:#10a0cc;"/>
+      <path d="M1568.52,2552.99l784.968,275.435l-458.27,-307.671l-326.698,32.236" style="fill:url(#_Linear2);"/>
+    </g>
+    <g id="_2" xmlns:serif="http://www.serif.com/" serif:id="2">
+      <path d="M1480.18,2166.96l-577.544,-443.004l-541.008,1107.2l1118.55,-664.192Z" style="fill:url(#_Linear3);"/>
+      <path d="M1480.18,2166.96l-1118.55,664.192l1599.38,-662.494l-480.824,-1.698Z" style="fill:url(#_Linear4);"/>
+      <path d="M1480.18,2166.96l480.824,1.698l-1058.37,-444.702l577.544,443.004Z" style="fill:url(#_Linear5);"/>
+    </g>
+    <g id="_1" xmlns:serif="http://www.serif.com/" serif:id="1">
+      <path d="M1257.92,1414.99l98.43,-623.47l-352.925,719.937l254.495,-96.467Z" style="fill:#10a0cc;"/>
+      <path d="M1970.91,2049.96l-712.995,-634.967l-254.495,96.467l967.49,538.5Z" style="fill:url(#_Linear6);"/>
+      <path d="M1970.91,2049.96l-614.565,-1258.44l-98.43,623.47l712.995,634.967Z" style="fill:url(#_Linear7);"/>
+    </g>
+  </g>
+</svg>

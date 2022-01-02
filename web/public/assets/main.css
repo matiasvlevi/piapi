@@ -37,14 +37,14 @@ main {
 }
 
 .container {
-  flex-grow: 1;
-  min-width: fit-content;
-  min-height: fit-content;
+  flex-grow: 0;
   padding: 2rem;
   border-radius: 28px;
   background-color: var(--mainTransparent);
   box-shadow: 0px 6px 18px var(--shadow);  
   margin-bottom: 3rem;
+  width:fit-content;
+  height:fit-content;
 }
 .plot {
   position: relative;
@@ -54,13 +54,32 @@ main {
   justify-content: center;
 }
 canvas {
-  max-height: 300px;
-  max-width: 400px;
-
-  /* margin-top: auto;
-  margin-bottom: auto; */
+  min-width: 40rem !important;
+  max-width: 40rem;
 }
 
+#cardTitleWrap {
+  display:flex;
+  flex:nowrap;
+  justify-content: space-between;
+}
+
+
+
+#downloadButton {
+  min-width: 44px;
+  min-height: 44px;
+  background-image: url('/assets/icons/download.svg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 32px 32px; /* Resize the background image to cover the entire container */
+  position:relative;
+  top:-0.5rem;
+}
+
+#downloadButton:hover {
+  background-image: url('/assets/icons/downloadw.svg');
+}
 
 
 .title {
@@ -120,7 +139,7 @@ button:hover {
     background-color: var(--dark);
     color: var(--light);
     cursor: pointer;
-    transform: translate(0px,12px);
+    transform: translate(0px,6px);
   }
 }
 

@@ -33,7 +33,7 @@ async function update(this: Logger) {
       let command = this.config.charts[chart].data[i];
 
       const { stdout } = await exec_(command.cmd);
-      ans.push(stdout.replace('\n', ''));
+      ans.push(stdout.replace('\n', '').replace(',', ''));
 
     }
     if (Object.keys(this.config.charts[chart]).includes('bounds')) {

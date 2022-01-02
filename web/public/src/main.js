@@ -57,6 +57,19 @@ function init(chartData, n) {
   return data;
 }
 
+function downloadFile(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
 function loadLogo(os) {
   let path = `./assets/logos/${os.toLocaleLowerCase()}.svg`;
   let logo = document.getElementById('distrologo');
@@ -91,30 +104,101 @@ function loadNeofetch(neofetch) {
   document.getElementById('neofetchBlock').textContent = neofetch;
 }
 
+
+function download(chart) {
+  let stream = [];
+  for (let k = 0; k < serverfetch.length; k++) {
+    let row = [];
+    Object.values(serverfetch.data[chart].data).forEach((dataset) => {
+      row.push(dataset[k]);
+    });
+
+    stream.push(row.join(','));
+  }
+  let header = Object.keys(serverfetch.data[chart].data).join(',');
+  let file = `${header}\n${stream.join('\n')}`;
+  let d = new Date();
+  downloadFile(`${chart.replaceAll(' ', '_')}-${d.getDate()}-${d.getMonth()}-${d.getFullYear()}`, file);
+}
+
+function addDomGraph(chart, i, config) {
+
+  let chartName = `chart${i}`
+
+  // Card container
+  let graphContainer = document.createElement('div');
+  graphContainer.setAttribute('class', 'container');
+
+  // Title wrapper
+  let titleContainer = document.createElement('div');
+  titleContainer.setAttribute('id', 'cardTitleWrap');
+
+  // Title
+  let chartTitle = document.createElement('h3');
+  chartTitle.textContent = chart;
+
+  // Download button
+  let downloadButton = document.createElement('button');
+
+  downloadButton.setAttribute('id', 'downloadButton');
+  downloadButton.setAttribute('onClick', `download("${chart}")`);
+
+  // Apply
+  titleContainer.appendChild(chartTitle);
+  titleContainer.appendChild(downloadButton);
+
+  // Canvas
+  let canvasplot = document.createElement('canvas');
+  canvasplot.setAttribute('id', chartName);
+
+  // Canvas container
+  let plot = document.createElement('div');
+  plot.setAttribute('class', 'plot');
+
+  // Combine all elements
+  plot.appendChild(canvasplot);
+  graphContainer.appendChild(titleContainer);
+  graphContainer.appendChild(plot);
+
+  // Apply
+  document.querySelector('.grid').appendChild(graphContainer);
+
+  // Create graph instance
+  let chart_ = new Chart(
+    canvasplot.getContext('2d'),
+    config
+  );
+  // Push to chart instance references
+  charts.push(chart_);
+}
+
 function main(json) {
 
 
+  // Load device info
   loadNeofetch(json.fetch);
   let os = getOS(json.fetch);
   loadLogo(os);
 
-  window.piapi = json;
+  // Save data as global value for debugging
+  window.serverfetch = json;
 
   let i = 0;
   for (let chart in json.data) {
     const data = init(json.data[chart].data, json.length);
-
-    // TODO : Replace 'bounds' with a variable key, which iterates through all the desired keys. Also add a conversion between keys ex:(bounds, scale)
     let opt = {
-      // responsive: false,
-      // maintainAspectRatio: false
+      pointRadius: 1,
+      pointHoverRadius: 1,
+      maintainAspectRatio: true
     };
     if (Object.keys(json.data[chart]).includes('bounds')) {
       let bounds = json.data[chart]['bounds'];
       console.log(bounds)
-      opt['scale'] = {
-        x: bounds[0],
-        y: bounds[1]
+      opt['scales'] = {
+        y: {
+          suggestedMin: bounds[0],
+          suggestedMax: bounds[1]
+        }
       };
     }
     const config = {
@@ -123,31 +207,8 @@ function main(json) {
       options: opt
     };
 
-    let graphContainer = document.createElement('div');
-    graphContainer.setAttribute('class', 'container');
+    addDomGraph(chart, i, config);
 
-    let chartTitle = document.createElement('h3');
-    chartTitle.textContent = chart;
-
-    let chartName = `chart${i}`;
-    let canvasplot = document.createElement('canvas');
-    let plot = document.createElement('div');
-
-    plot.setAttribute('class', 'plot');
-    canvasplot.setAttribute('id', `chart${i}`);
-    plot.appendChild(canvasplot);
-    graphContainer.appendChild(chartTitle);
-    graphContainer.appendChild(plot);
-    document.querySelector('.grid').appendChild(graphContainer);
-
-    let canvas = document.getElementById(chartName);
-
-    let chart_ = new Chart(
-      canvas.getContext('2d'),
-      config
-    );
-
-    charts.push(chart_);
     i++;
   }
   setTimeout(UpdateGraph, 5000);
@@ -157,6 +218,7 @@ function main(json) {
 // UpdateGraph
 function UpdateGraph() {
   fetch('../temp.json').then(res => res.json()).then(json => {
+    window.serverfetch = json;
     loadNeofetch(json.fetch);
     if (json.length > oldlength) {
       let j = 0;
