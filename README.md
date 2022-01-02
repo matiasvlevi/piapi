@@ -107,3 +107,4 @@ Your specified charts in `.apirc` are displayed below
 <img src="https://i.ibb.co/wzWjR7F/dashboard.png" width="750px"></img>
 
 
+You can see what OS/distros have a recognized icon [here](https://raw.githack.com/matiasvlevi/serverfetch/main/web/public/distros.html)
