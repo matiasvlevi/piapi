@@ -59,4 +59,4 @@ Multiple charts can be added by adding to the `charts` object
 
 #### Web app
 
-<img src="/imgs/mySampleValue.png" width="650px"/>
+<img src="./imgs/mySampleValue.png" width="650px"/>
