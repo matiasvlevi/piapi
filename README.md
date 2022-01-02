@@ -59,7 +59,7 @@ Multiple datasets can be added in one chart by adding to the corresponding `data
 Multiple charts can be added by adding to the `charts` object
 
 
-> NOTE: you can also use `npm run piconfig` for a raspbian default config, which logs cpu/core clocks, temperaure and memory (using vcgencmd).
+> NOTE: you can also use `npm run piconfig` for a raspbian default config, which logs cpu/core clocks, temperature and memory (using vcgencmd).
 
 <br/>
 
@@ -94,5 +94,16 @@ npm run server
 
 
 
+<br/>
+
+## Web App preview
+
+The app uses neofetch to get the device's info. 
+
+<img src="https://i.ibb.co/VHj15Ts/main.png" width="750px"></img>
+
+Your specified charts in `.apirc` are displayed below
+
+<img src="https://i.ibb.co/wzWjR7F/dashboard.png" width="750px"></img>
 
 
