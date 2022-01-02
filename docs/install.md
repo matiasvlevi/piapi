@@ -25,3 +25,6 @@ Graphs:
 Log files paths & web ports:
 [How to configure](https://github.com/matiasvlevi/serverfetch/docs/env.md)
 
+---
+
+[go back](https://github.com/matiasvlevi/severfetch)
