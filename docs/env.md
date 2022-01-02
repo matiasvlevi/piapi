@@ -19,4 +19,4 @@ WEBPORT="3000"
 
 ---
 
-[go back](https://github.com/matiasvlevi/severfetch)
+[go back](https://github.com/matiasvlevi/serverfetch)

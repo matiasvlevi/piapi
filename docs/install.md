@@ -27,4 +27,4 @@ Log files paths & web ports:
 
 ---
 
-[go back](https://github.com/matiasvlevi/severfetch)
+[go back](https://github.com/matiasvlevi/serverfetch/)
