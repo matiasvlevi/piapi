@@ -6,10 +6,10 @@ Here is a plain `.apirc` file
 {
   "freq": "5000",
   "charts": {
-    "temperature": {
+    "myChart1": {
       "data": [
         {
-          "name": "CPU",
+          "name": "myValue",
           "cmd": "YOUR_SHELL_COMMAND_HERE"
         }
       ]
