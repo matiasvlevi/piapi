@@ -24,10 +24,14 @@ export function makeJSON(this: Logger) {
       }
     }
 
-    // TODO: Replace 'bounds' with a custom key, & iterate through all desired keys.
-    if (Object.keys(this.chartsConfig[chart]).includes('bounds')) {
-      data[chart]['bounds'] = this.chartsConfig[chart]['bounds'];
+    // Add relevant options to the web application
+    let optionKeys = ['bounds', 'responsivePointSize', 'pointSize'];
+    for (let key of optionKeys) {
+      if (Object.keys(this.config.charts[chart]).includes(key)) {
+        data[chart][key] = this.config.charts[chart][key];
+      }
     }
+
   }
 
   // JSON sent to the Web App 

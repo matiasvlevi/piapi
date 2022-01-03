@@ -8,10 +8,10 @@ function delay(time: number) {
 async function update(this: Logger) {
   await delay(+this.config.freq);
 
-  this.chartsConfig = {};
+
   let ans: string[] = [];
   for (let chart in this.config.charts) {
-    this.chartsConfig[chart] = {};
+
     for (let i = 0; i < this.config.charts[chart].data.length; i++) {
       let command = this.config.charts[chart].data[i];
 
@@ -19,9 +19,7 @@ async function update(this: Logger) {
       ans.push(stdout.replace('\n', '').replace(',', ''));
 
     }
-    if (Object.keys(this.config.charts[chart]).includes('bounds')) {
-      this.chartsConfig[chart]['bounds'] = this.config.charts[chart].bounds;
-    }
+
   }
 
   // If neofetch is installed, use neofetch

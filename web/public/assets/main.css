@@ -28,12 +28,25 @@ main {
   width: 90%;
   margin:auto
 }
+@media only screen and (max-width:870px){
+  main {
+    width:98%;
+    margin:auto;
+  }
+  html,
+  body {
+    width:100%;
+    height: 100%;
+  }
+}
+
 .grid {
   display:inline-flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap:4%;
   align-items: stretch;
+
 }
 
 .container {
@@ -43,8 +56,10 @@ main {
   background-color: var(--mainTransparent);
   box-shadow: 0px 6px 18px var(--shadow);  
   margin-bottom: 3rem;
-  width:fit-content;
-  height:fit-content;
+  min-width:fit-content;
+  min-height:fit-content;
+  /* flex-basis: 100%;
+  max-height:100%; */
 }
 .plot {
   position: relative;
@@ -55,7 +70,6 @@ main {
 }
 canvas {
   min-width: 40rem !important;
-  max-width: 40rem;
 }
 
 #cardTitleWrap {
@@ -186,3 +200,4 @@ button:hover {
 p {
   max-width: 24em;
 }
+

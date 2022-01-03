@@ -8,7 +8,6 @@ export default class Logger {
   path: string;
   logname: string;
   header: string[];
-  chartsConfig: any;
   fetch: string;
   fileIndex: number;
   logstream: string;
@@ -20,7 +19,6 @@ export default class Logger {
     let data = this.initStream();
     this.stream = data.csv;
     this.header = data.header;
-    this.chartsConfig = {};
     this.fetch = '';
     this.fileIndex = 0;
     this.logstream = '';

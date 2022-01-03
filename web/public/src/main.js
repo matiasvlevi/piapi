@@ -1,3 +1,5 @@
+const isMobile = (window.innerWidth < 1000)
+
 let oldlength = 0;
 fetch('../temp.json').then(res => res.json()).then(x => {
   oldlength = x.length;
@@ -154,18 +156,25 @@ function addDomGraph(chart, i, config) {
   // Canvas
   let canvasplot = document.createElement('canvas');
   canvasplot.setAttribute('id', chartName);
+  canvasplot.setAttribute('class', 'chart');
 
   // Canvas container
   let plot = document.createElement('div');
   plot.setAttribute('class', 'plot');
+
+  if (isMobile) {
+    plot.setAttribute('style', 'width:100%;');
+    graphContainer.setAttribute('style', 'width:100%;');
+  }
 
   // Combine all elements
   plot.appendChild(canvasplot);
   graphContainer.appendChild(titleContainer);
   graphContainer.appendChild(plot);
 
+
   // Apply
-  document.querySelector('.grid').appendChild(graphContainer);
+  document.getElementById('chartsGrid').appendChild(graphContainer);
 
   // Create graph instance
   let chart_ = new Chart(
@@ -188,19 +197,22 @@ function main(json) {
   window.serverfetch = json;
 
   let i = 0;
+
   for (let chart in json.data) {
-    const data = init(json.data[chart].data, json.length);
-    let labelsLength = (json.length > max) ? max : json.length;
-    let d = 6 - Math.floor(((4 * labelsLength) / max));
-    console.log(d)
+    let chrt = json.data[chart];
+
+    const data = init(chrt.data, json.length);
+
+    let pointSize = (chrt.pointSize !== undefined) ? chrt.pointSize : 2;
+    let pointRadius = (chrt.responsivePointSize) ? responsivePointSize(json.length, max, i) : pointSize
+    let pointHoverRadius = chrt.pointHoverRadius || 4;
     let opt = {
-      pointRadius: d,
-      pointHoverRadius: 5,
+      pointRadius,
+      pointHoverRadius,
       maintainAspectRatio: true
     };
-    if (Object.keys(json.data[chart]).includes('bounds')) {
-      let bounds = json.data[chart]['bounds'];
-      console.log(bounds)
+    if (Object.keys(chrt).includes('bounds')) {
+      let bounds = chrt['bounds'];
       opt['scales'] = {
         y: {
           suggestedMin: bounds[0],
@@ -217,40 +229,78 @@ function main(json) {
     addDomGraph(chart, i, config);
     i++;
   }
+  // Resize plots
+  if (window.innerWidth < 1000) {
+    document.querySelector('#chartsGrid').style = 'width: 100%;margin:0px;'
+    document.querySelector('main').style = 'width:98%;margin:0px';
+    document.querySelectorAll('#chartsGrid > .container').forEach(elem => {
+      elem.style.width = `100%`
+      elem.style.height = '50%';
+    });
+    document.querySelectorAll('.plot').forEach(elem => {
+      elem.style.width = `100%`;
+      elem.style.height = '100%';
+    });
+  }
   setTimeout(UpdateGraph, 5000);
 }
 
+function setValue(i, key, v) {
+  charts[i].config._config.options[key] = v;
+}
+
+function mapSteps(minSize, maxSize, x, total) {
+  let c = (-minSize) + maxSize + 1;
+  let size = maxSize - Math.floor((c * x) / total);
+  return size;
+}
+
+function responsivePointSize(length, max) {
+  let len = (length > max) ? max : length;
+  let size = mapSteps(2, 6, len, max);
+  return size;
+}
+
+function setPointSize(size, i) {
+  console.log('Size', size)
+  charts[i].config._config.options.pointRadius = size;
+}
 
 // UpdateGraph
 function UpdateGraph() {
+
   fetch('../temp.json').then(res => res.json()).then(json => {
     window.serverfetch = json;
     loadNeofetch(json.fetch);
     if (json.length > oldlength) {
       let j = 0;
       for (let chart in json.data) {
+        let chrt = json.data[chart];
         let values = [];
-        let keys = Object.keys(json.data[chart].data);
+        let keys = Object.keys(chrt.data);
         for (let i = 0; i < keys.length; i++) {
-          let l = json.data[chart].data[keys[i]];
+          let l = chrt.data[keys[i]];
           values.push(l[l.length - 1])
         }
 
-        let labelsLength = charts[j].data.datasets[0].data.length;
+        let pointSize = (chrt.pointSize !== undefined) ? chrt.pointSize : 2;
+        let pointRadius = (chrt.responsivePointSize) ? responsivePointSize(json.length, max, j) : pointSize
+        let pointHoverRadius = chrt.pointHoverRadius || 4;
 
+        setValue(j, 'pointRadius', pointRadius)
+        setValue(j, 'pointHoverRadius', pointHoverRadius)
 
+        setPointSize(responsivePointSize(json.length, max), j);
 
-
+        let currentLabelsLength = charts[j].data.datasets[0].data.length;
 
         if (json.length <= max) {
-          updateLabels(charts[j], (labelsLength > max) ? max : labelsLength);
+          updateLabels(charts[j], (currentLabelsLength > max) ? max : currentLabelsLength);
         }
         addData(charts[j], values);
         if (json.length > max) {
           removeData(charts[j]);
         }
-
-
         j++;
       }
       charts.forEach((chart) => {
@@ -259,7 +309,7 @@ function UpdateGraph() {
       console.log('Updating...');
       oldlength = json.length;
     }
-    setTimeout(UpdateGraph, 5000);
+    setTimeout(UpdateGraph, 1000);
   });
 
 }

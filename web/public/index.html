@@ -1,7 +1,11 @@
 
 <html>
   <head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- META TAGS -->
+
+    <!-- META TAGS END -->
+
+    <script src="./node_modules/chart.js/dist/chart.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2&family=Poppins:wght@500&display=swap" rel="stylesheet">
@@ -22,25 +26,27 @@
     </header>
     <main>
       <h2>Device</h2>
-      <div class="container" style="margin-left:3rem;">
-        <div class="metainfo">
-          <img src="" width="200px" height="200px" id="distrologo" style="display:none;" alt="linux distro logo"/>
-          <div class="codeContainer">
-            <code class="neofetch">
-              <pre id="neofetchBlock">
-
-              </pre>
-            </code>
+      <div class="grid">
+        <div class="container" >
+          <div class="metainfo">
+            <img src="" width="200px" height="200px" id="distrologo" style="display:none;" alt="linux distro logo"/>
+            <div class="codeContainer">
+              <code class="neofetch">
+                <pre id="neofetchBlock">
+  
+                </pre>
+              </code>
+            </div>
+            <div>
+              <p></p>
+            </div>
+  
           </div>
-          <div>
-            <p></p>
-          </div>
-
         </div>
       </div>
       <div class="spacer"></div>
       <h2>Your Charts</h2>
-      <div class="grid">
+      <div class="grid" id="chartsGrid">
       
       </div>
     </main>
