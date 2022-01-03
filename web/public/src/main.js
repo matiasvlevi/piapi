@@ -269,48 +269,54 @@ function setPointSize(size, i) {
 // UpdateGraph
 function UpdateGraph() {
 
-  fetch('../temp.json').then(res => res.json()).then(json => {
-    window.serverfetch = json;
-    loadNeofetch(json.fetch);
-    if (json.length > oldlength) {
-      let j = 0;
-      for (let chart in json.data) {
-        let chrt = json.data[chart];
-        let values = [];
-        let keys = Object.keys(chrt.data);
-        for (let i = 0; i < keys.length; i++) {
-          let l = chrt.data[keys[i]];
-          values.push(l[l.length - 1])
+  fetch('../len.json').then(res => res.json()).then(ign => {
+    if (ign.length > oldlength) {
+      fetch('../temp.json').then(res => res.json()).then(json => {
+        window.serverfetch = json;
+        loadNeofetch(json.fetch);
+        if (json.length > oldlength) {
+          let j = 0;
+          for (let chart in json.data) {
+            let chrt = json.data[chart];
+            let values = [];
+            let keys = Object.keys(chrt.data);
+            for (let i = 0; i < keys.length; i++) {
+              let l = chrt.data[keys[i]];
+              values.push(l[l.length - 1])
+            }
+
+            let pointSize = (chrt.pointSize !== undefined) ? chrt.pointSize : 2;
+            let pointRadius = (chrt.responsivePointSize) ? responsivePointSize(json.length, max, j) : pointSize
+            let pointHoverRadius = chrt.pointHoverRadius || 4;
+
+            setValue(j, 'pointRadius', pointRadius)
+            setValue(j, 'pointHoverRadius', pointHoverRadius)
+
+            setPointSize(responsivePointSize(json.length, max), j);
+
+            let currentLabelsLength = charts[j].data.datasets[0].data.length;
+
+            if (json.length <= max) {
+              updateLabels(charts[j], (currentLabelsLength > max) ? max : currentLabelsLength);
+            }
+            addData(charts[j], values);
+            if (json.length > max) {
+              removeData(charts[j]);
+            }
+            j++;
+          }
+          charts.forEach((chart) => {
+            chart.update()
+          });
+          console.log('Updating...');
+          oldlength = json.length;
         }
-
-        let pointSize = (chrt.pointSize !== undefined) ? chrt.pointSize : 2;
-        let pointRadius = (chrt.responsivePointSize) ? responsivePointSize(json.length, max, j) : pointSize
-        let pointHoverRadius = chrt.pointHoverRadius || 4;
-
-        setValue(j, 'pointRadius', pointRadius)
-        setValue(j, 'pointHoverRadius', pointHoverRadius)
-
-        setPointSize(responsivePointSize(json.length, max), j);
-
-        let currentLabelsLength = charts[j].data.datasets[0].data.length;
-
-        if (json.length <= max) {
-          updateLabels(charts[j], (currentLabelsLength > max) ? max : currentLabelsLength);
-        }
-        addData(charts[j], values);
-        if (json.length > max) {
-          removeData(charts[j]);
-        }
-        j++;
-      }
-      charts.forEach((chart) => {
-        chart.update()
+        setTimeout(UpdateGraph, 4000);
       });
-      console.log('Updating...');
-      oldlength = json.length;
     }
-    setTimeout(UpdateGraph, 1000);
-  });
+  })
+
+
 
 }
 

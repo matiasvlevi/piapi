@@ -14,4 +14,7 @@ export function write(this: Logger) {
 
   // Web data
   Logger.writeFile(`./web/public/temp.json`, json);
+  Logger.writeFile(`./web/public/len.json`, JSON.stringify({
+    length: this.stream.length
+  }));
 }
