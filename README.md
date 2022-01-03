@@ -100,6 +100,8 @@ npm run server
 
 The app uses neofetch to get the device's info. 
 
+You can see what OS/distros have a recognized icon [here](https://raw.githack.com/matiasvlevi/serverfetch/main/web/public/distros.html)
+
 <img src="https://i.ibb.co/VHj15Ts/main.png" width="750px"></img>
 
 Your specified charts in `.apirc` are displayed below
@@ -107,4 +109,4 @@ Your specified charts in `.apirc` are displayed below
 <img src="https://i.ibb.co/wzWjR7F/dashboard.png" width="750px"></img>
 
 
-You can see what OS/distros have a recognized icon [here](https://raw.githack.com/matiasvlevi/serverfetch/main/web/public/distros.html)
+
