@@ -20,10 +20,10 @@ npm run config-linux
 ### Configure 
 
 Graphs:
-[How to configure](https://github.com/matiasvlevi/serverfetch/docs/apirc.md)
+[How to configure](https://github.com/matiasvlevi/serverfetch/blob/main/docs/apirc.md)
 
 Log files paths & web ports:
-[How to configure](https://github.com/matiasvlevi/serverfetch/docs/env.md)
+[How to configure](https://github.com/matiasvlevi/serverfetch/blob/main/docs/env.md)
 
 ---
 

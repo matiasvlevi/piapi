@@ -13,10 +13,10 @@ WEBPORT="3000"
 * `WRITEPATH`: Logs save path 
 * `LOGNAME`: `.log` logs file name
 * `CSVNAME`: `.csv` logs file name
-* `WEBPORT`: Web application port (Displaying graphs in realtime see [here](https://github.com/matiasvlevi/serverfetch/docs/apirc.md))
+* `WEBPORT`: Web application port (Displaying graphs in realtime see [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/apirc.md) for more customization)
 
 <br/>
 
 ---
 
-[go back](https://github.com/matiasvlevi/serverfetch)
+[go back](https://github.com/matiasvlevi/serverfetch/blob/main/docs/env.md)
