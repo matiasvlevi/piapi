@@ -34,49 +34,19 @@ npm run config-linux
 
 This just created a plain `.apirc` and `.env` file.
 
-### .apirc
-
-```json
-{
-  "freq": "5000",
-  "charts": {
-    "temperature": {
-      "data": [
-        {
-          "name": "CPU",
-          "cmd": "YOUR_SHELL_COMMAND_HERE"
-        }
-      ]
-    }
-  }
-}
-```
-
-* `freq`: Frequency of logs (ms)
-* `charts` : Object containing named chart objects.
-
-Multiple datasets can be added in one chart by adding to the corresponding `data` property.
-Multiple charts can be added by adding to the `charts` object
-
-
 > NOTE: you can also use `npm run piconfig` for a raspbian default config, which logs cpu/core clocks, temperature and memory (using vcgencmd).
+
 
 <br/>
 
+
+### .apirc
+
+Configuration docs [here](https://github.com/matiasvlevi/serverfetch/docs/apirc.md)
+
 ### .env
 
-
-```env
-WRITEPATH="/your/log/path"
-LOGNAME="log"
-CSVNAME="report"
-JSONNAME="temp"
-WEBPORT="3000"
-```
-
-The only value to modify is
-
-* `WRITEPATH`: Where to write the logs?
+Configuration docs [here](https://github.com/matiasvlevi/serverfetch/docs/env.md)
 
 <br/>
 
