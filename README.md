@@ -34,7 +34,7 @@ npm run config-linux
 
 This just created a plain `.apirc` and `.env` file.
 
-> NOTE: you can also use `npm run piconfig` for a raspbian default config, which logs cpu/core clocks, temperature and memory (using vcgencmd).
+> NOTE: you can also use `npm run piconfig` to overwrite `.apirc` with a raspbian default config, which logs cpu/core clocks, temperature and memory (using vcgencmd).
 
 
 <br/>
