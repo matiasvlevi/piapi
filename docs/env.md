@@ -1,7 +1,7 @@
 ### .env
 
 
-Here is a plain `.env' file
+Here is a plain `.env` file
 
 ```env
 WRITEPATH="/your/log/path"
