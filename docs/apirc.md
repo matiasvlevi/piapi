@@ -88,4 +88,4 @@ Adding the `bounds` property will apply the bounds on the corresponding graph.
 
 ---
 
-[go back](https://github.com/matiasvlevi/severfetch)
+[go back](https://github.com/matiasvlevi/serverfetch)

@@ -42,11 +42,11 @@ This just created a plain `.apirc` and `.env` file.
 
 ### .apirc
 
-Configuration docs [here](https://github.com/matiasvlevi/serverfetch/docs/apirc.md)
+Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/apirc.md)
 
 ### .env
 
-Configuration docs [here](https://github.com/matiasvlevi/serverfetch/docs/env.md)
+Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/env.md)
 
 <br/>
 

@@ -242,7 +242,7 @@ function main(json) {
       elem.style.height = '100%';
     });
   }
-  setTimeout(UpdateGraph, 5000);
+  setTimeout(UpdateGraph, 500);
 }
 
 function setValue(i, key, v) {
@@ -270,6 +270,7 @@ function setPointSize(size, i) {
 function UpdateGraph() {
 
   fetch('../len.json').then(res => res.json()).then(ign => {
+    console.log(ign)
     if (ign.length > oldlength) {
       fetch('../temp.json').then(res => res.json()).then(json => {
         window.serverfetch = json;
@@ -303,20 +304,17 @@ function UpdateGraph() {
             if (json.length > max) {
               removeData(charts[j]);
             }
+            charts[j].update();
             j++;
           }
-          charts.forEach((chart) => {
-            chart.update()
-          });
           console.log('Updating...');
-          oldlength = json.length;
+          oldlength = ign.length;
         }
-        setTimeout(UpdateGraph, 4000);
+        setTimeout(UpdateGraph, 500);
       });
+    } else {
+      setTimeout(UpdateGraph, 500);
     }
   })
-
-
-
 }
 
