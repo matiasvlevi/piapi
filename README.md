@@ -46,14 +46,23 @@ cd ./web/public
 npm ci
 ```
 
+<br/>
+
+### .env
+
+Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/env.md)
+
 
 ### .apirc
 
 Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/apirc.md)
 
-### .env
+You can look for usable templates for your system in our `./configs` directory. 
+Replace your root `.apirc` with the corresponding `./config/distro.apirc`.
 
-Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/env.md)
+If your system is not present, feel free to add it in pull request!
+
+
 
 <br/>
 
