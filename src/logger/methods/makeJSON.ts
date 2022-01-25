@@ -39,6 +39,7 @@ export function makeJSON(this: Logger) {
     header,
     data,
     length,
+    freq: this.config.freq,
     fetch: this.fetch
   });
   return json;

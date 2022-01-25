@@ -9,11 +9,12 @@ fetch('../temp.json').then(res => res.json()).then(x => {
 const max = 100;
 const chart = 'myChart1';
 const charts = [];
-function makeArray(n, freq = 5000) {
+function makeArray(n, f = 5000) {
   let ans = [];
-  let maxtime = freq * n;
+  let maxtime = f * n;
   for (let i = 0; i < n; i++) {
-    let v = ((maxtime) - ((i * freq))) / 1000;
+
+    let v = ((maxtime) - ((i * f))) / 1000;
     if (i / 5 === Math.floor(i / 5)) {
       ans.push(`-${v} sec`)
     } else {
@@ -49,7 +50,7 @@ function init(chartData, n) {
     d.push(obj);
     i++;
   }
-  let a = (n > max) ? makeArray(max) : makeArray(n);
+  let a = (n > max) ? makeArray(max, freq) : makeArray(n, freq);
 
   const data = {
     labels: a,
@@ -79,7 +80,7 @@ function loadLogo(os) {
 }
 
 function updateLabels(chart, n) {
-  chart.data.labels = makeArray(n);
+  chart.data.labels = makeArray(n, freq);
 }
 
 function addData(chart, data) {
@@ -242,7 +243,7 @@ function main(json) {
       elem.style.height = '100%';
     });
   }
-  setTimeout(UpdateGraph, 500);
+  setTimeout(UpdateGraph, freq);
 }
 
 function setValue(i, key, v) {
@@ -265,7 +266,7 @@ function setPointSize(size, i) {
   console.log('Size', size)
   charts[i].config._config.options.pointRadius = size;
 }
-
+let freq = 1;
 // UpdateGraph
 function UpdateGraph() {
 
@@ -274,6 +275,7 @@ function UpdateGraph() {
     if (ign.length > oldlength) {
       fetch('../temp.json').then(res => res.json()).then(json => {
         window.serverfetch = json;
+        freq = json.freq;
         loadNeofetch(json.fetch);
         if (json.length > oldlength) {
           let j = 0;
@@ -310,10 +312,10 @@ function UpdateGraph() {
           console.log('Updating...');
           oldlength = ign.length;
         }
-        setTimeout(UpdateGraph, 500);
+        setTimeout(UpdateGraph, freq);
       });
     } else {
-      setTimeout(UpdateGraph, 500);
+      setTimeout(UpdateGraph, freq);
     }
   })
 }

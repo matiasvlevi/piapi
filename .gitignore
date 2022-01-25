@@ -4,3 +4,4 @@ node_modules
 .env
 /bin
 /web/public/temp.json
+/web/public/len.json

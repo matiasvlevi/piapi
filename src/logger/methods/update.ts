@@ -14,19 +14,24 @@ async function update(this: Logger) {
 
     for (let i = 0; i < this.config.charts[chart].data.length; i++) {
       let command = this.config.charts[chart].data[i];
-
-      const { stdout } = await Logger.exec(command.cmd);
-      ans.push(stdout.replace('\n', '').replace(',', ''));
-
+      try {
+        let { stdout } = await Logger.exec(command.cmd);
+        ans.push(stdout.replace('\n', '').replace(',', ''));
+      } catch (e) {
+        console.error(e);
+        console.log(`\nSERVERFETCH: \x1b[31m Please configure the '.apirc' file with valid system commands \x1b[0m`);
+        return;
+      }
     }
-
   }
 
   // If neofetch is installed, use neofetch
   try {
-    let neofetch = (await Logger.exec(`neofetch --stdout`)).stdout
-    this.fetch = neofetch;
+    let { stdout } = await Logger.exec(`neofetch --stdout`);
+    this.fetch = stdout;
   } catch (e) {
+    console.error(e);
+    console.log(`\n\x1b[34mNeofetch not installed \x1b[0m`);
     this.fetch = 'neofetch not found on host device';
   }
 

@@ -19,10 +19,10 @@ body {
   background-color: var(--light);
 }
 header {
-  min-height: 13%;
+  min-height: 11%;
   background-color: var(--light);
   box-shadow: 0px 6px 18px var(--shadow); 
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 main {
   width: 90%;
@@ -56,11 +56,16 @@ main {
   background-color: var(--mainTransparent);
   box-shadow: 0px 6px 18px var(--shadow);  
   margin-bottom: 3rem;
-  min-width:fit-content;
-  min-height:fit-content;
-  /* flex-basis: 100%;
-  max-height:100%; */
+  min-width:39%;
+  min-height: 44%;
+  width:fit-content;
+  height:fit-content;
 }
+
+#slim {
+  padding: 1.4rem;
+}
+
 .plot {
   position: relative;
   top:0px;
@@ -98,17 +103,12 @@ canvas {
 
 .title {
   margin-left: 6%;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   display:flex;
   flex-direction: row;
   gap: 8rem
 }
 
-h2 {
-  margin-top: 0.5rem;
-  margin: 1rem;
- 
-}
 
 h1,
 h2,
@@ -121,10 +121,15 @@ h1 {
   font-size: 2.5em;
 }
 
-h2 {
-  font-size: 2em;
+.title > h1 {
+  margin: 0px;
 }
 
+h2 {
+  margin-top: 0.5rem;
+  margin: 1rem;
+  font-size: 2em;
+}
 h3 {
   font-size: 1.45em;
   margin-bottom: 0.5rem;
@@ -162,13 +167,13 @@ button:hover {
   flex-direction: row;
   gap: 1rem;
   height: fit-content;
-  margin-top: 2rem;
 }
 
 .metainfo {
   display:flex;
-  flex:nowrap;
-  gap: 2rem;
+  flex-wrap:nowrap;
+  gap:0px;
+  justify-content: center;
 }
 
 .spacer {
@@ -189,7 +194,7 @@ button:hover {
 #distrologo {
   margin-top:auto;
   margin-bottom: auto;
-  margin-left: 4rem;
+  margin-left: 2rem;
   margin-right: 4rem;
 }
 

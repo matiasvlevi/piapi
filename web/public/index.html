@@ -1,54 +1,57 @@
-
 <html>
-  <head>
-    <!-- META TAGS -->
 
-    <!-- META TAGS END -->
+<head>
+  <!-- META TAGS -->
 
-    <script src="./node_modules/chart.js/dist/chart.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2&family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/main.css">
-    <script src="./src/main.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="title">
-        <h1>SERVER<span id="colorText">FETCH</span></h1>
-        <div class="buttonGrid">
-          <a href="https://github.com/matiasvlevi/serverfetch"><button>About</button></a>
-          <a href="https://github.com/matiasvlevi/serverfetch"><button>Get Started</button></a>
-          <a href="https://github.com/matiasvlevi/serverfetch"><button>Documentation</button></a>
-          <a href="https://github.com/matiasvlevi/serverfetch"><button>GitHub</button></a>
-        </div>
+  <!-- META TAGS END -->
+
+  <script src="./node_modules/chart.js/dist/chart.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2&family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/main.css">
+  <script src="./src/main.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>SERVER<span id="colorText">FETCH</span></h1>
+      <div class="buttonGrid">
+        <a href="https://github.com/matiasvlevi/serverfetch"><button>About</button></a>
+        <a href="https://github.com/matiasvlevi/serverfetch"><button>Get Started</button></a>
+        <a href="https://github.com/matiasvlevi/serverfetch"><button>Documentation</button></a>
+        <a href="https://github.com/matiasvlevi/serverfetch"><button>GitHub</button></a>
       </div>
-    </header>
-    <main>
-      <h2>Device</h2>
-      <div class="grid">
-        <div class="container" >
-          <div class="metainfo">
-            <img src="" width="200px" height="200px" id="distrologo" style="display:none;" alt="linux distro logo"/>
-            <div class="codeContainer">
-              <code class="neofetch">
+    </div>
+  </header>
+  <main>
+
+    <div class="grid">
+
+    </div>
+    <div class="spacer"></div>
+    <div class="grid" id="chartsGrid">
+      <div class="container" id="slim">
+        <h3>Device</h3>
+        <div class="metainfo">
+
+          <img src="" width="200px" height="200px" id="distrologo" style="display:none;" alt="linux distro logo" />
+          <div class="codeContainer">
+            <code class="neofetch">
                 <pre id="neofetchBlock">
   
                 </pre>
               </code>
-            </div>
-            <div>
-              <p></p>
-            </div>
-  
           </div>
+          <div>
+            <p></p>
+          </div>
+
         </div>
       </div>
-      <div class="spacer"></div>
-      <h2>Your Charts</h2>
-      <div class="grid" id="chartsGrid">
-      
-      </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>

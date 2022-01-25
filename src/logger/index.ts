@@ -37,6 +37,7 @@ export default class Logger {
   public static writeFile = methods.writeFile;
   public static fileExists = methods.fileExists;
   public static removeColors = methods.removeColors;
+  public static configErr = methods.configErr;
 
   public initStream = methods.initStream.bind(this);
   public logData = methods.logData.bind(this);
