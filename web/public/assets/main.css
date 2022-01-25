@@ -1,5 +1,3 @@
-
-
 :root {
   --light: #EEEEEE;
   --main: #EEEEEE;
@@ -11,42 +9,47 @@
   --red: #F8485E;
 }
 
-
 html,
 body {
   margin: 0px;
+  background-color: var(--light);
+}
 
-  background-color: var(--light);
-}
 header {
-  min-height: 11%;
+  min-height: fit-content;
   background-color: var(--light);
-  box-shadow: 0px 6px 18px var(--shadow); 
-  margin-bottom: 2rem;
+  box-shadow: 0px 6px 18px var(--shadow);
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 2rem;
+  padding-bottom: 0.5rem;
 }
+
 main {
   width: 90%;
-  margin:auto
+  margin: auto
 }
-@media only screen and (max-width:870px){
+
+@media only screen and (max-width:870px) {
   main {
-    width:98%;
-    margin:auto;
+    width: 98%;
+    margin: auto;
   }
   html,
   body {
-    width:100%;
+    width: 100%;
     height: 100%;
   }
 }
 
 .grid {
-  display:inline-flex;
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap:4%;
+  gap: 4%;
   align-items: stretch;
-
 }
 
 .container {
@@ -54,12 +57,12 @@ main {
   padding: 2rem;
   border-radius: 28px;
   background-color: var(--mainTransparent);
-  box-shadow: 0px 6px 18px var(--shadow);  
+  box-shadow: 0px 6px 18px var(--shadow);
   margin-bottom: 3rem;
-  min-width:39%;
+  min-width: 39%;
   min-height: 44%;
-  width:fit-content;
-  height:fit-content;
+  width: fit-content;
+  height: fit-content;
 }
 
 #slim {
@@ -68,47 +71,48 @@ main {
 
 .plot {
   position: relative;
-  top:0px;
+  top: 0px;
   left: 0px;
-  display:flex;
+  display: flex;
   justify-content: center;
 }
+
 canvas {
   min-width: 40rem !important;
 }
 
 #cardTitleWrap {
-  display:flex;
-  flex:nowrap;
+  display: flex;
+  flex: nowrap;
   justify-content: space-between;
 }
-
-
 
 #downloadButton {
   min-width: 44px;
   min-height: 44px;
   background-image: url('/assets/icons/download.svg');
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: 32px 32px; /* Resize the background image to cover the entire container */
-  position:relative;
-  top:-0.5rem;
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: 32px 32px;
+  /* Resize the background image to cover the entire container */
+  position: relative;
+  top: -0.5rem;
 }
 
 #downloadButton:hover {
   background-image: url('/assets/icons/downloadw.svg');
 }
 
-
 .title {
   margin-left: 6%;
   padding-top: 0.5rem;
-  display:flex;
+  display: flex;
   flex-direction: row;
-  gap: 8rem
+  gap: 8rem;
+  align-items: center;
 }
-
 
 h1,
 h2,
@@ -116,12 +120,11 @@ h3 {
   font-family: 'Poppins', sans-serif;
 }
 
-
 h1 {
   font-size: 2.5em;
 }
 
-.title > h1 {
+.title>h1 {
   margin: 0px;
 }
 
@@ -130,6 +133,7 @@ h2 {
   margin: 1rem;
   font-size: 2em;
 }
+
 h3 {
   font-size: 1.45em;
   margin-bottom: 0.5rem;
@@ -140,17 +144,17 @@ button {
   position: relative;
   border: none;
   padding: 1em;
-  font-family:  'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--light);
   border-radius: 12px;
   box-shadow: 0px 3px 8px var(--shadow);
 }
+
 button:hover {
   animation: buttonAnim 0.4s forwards;
   background-color: var(--dark);
   color: var(--light);
   cursor: pointer;
-
 }
 
 @keyframes buttonAnim {
@@ -158,7 +162,7 @@ button:hover {
     background-color: var(--dark);
     color: var(--light);
     cursor: pointer;
-    transform: translate(0px,6px);
+    transform: translate(0px, 6px);
   }
 }
 
@@ -170,9 +174,9 @@ button:hover {
 }
 
 .metainfo {
-  display:flex;
-  flex-wrap:nowrap;
-  gap:0px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0px;
   justify-content: center;
 }
 
@@ -192,7 +196,7 @@ button:hover {
 }
 
 #distrologo {
-  margin-top:auto;
+  margin-top: auto;
   margin-bottom: auto;
   margin-left: 2rem;
   margin-right: 4rem;
@@ -205,4 +209,3 @@ button:hover {
 p {
   max-width: 24em;
 }
-
