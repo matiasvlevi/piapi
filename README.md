@@ -57,7 +57,7 @@ Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/d
 
 Configuration docs [here](https://github.com/matiasvlevi/serverfetch/blob/main/docs/apirc.md)
 
-You can look for usable templates for your system in our `./configs` directory. 
+You can look for usable templates corresponding to your system in our `./configs` directory. 
 Replace your root `.apirc` with the corresponding `./config/distro.apirc`.
 
 If your system is not present, feel free to add it in pull request!
