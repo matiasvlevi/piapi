@@ -99,6 +99,8 @@ Adding the `responsivePointSize` property will allow for the points on the graph
 
 <br/>
 
+# Config Templates
+
 You can look for usable templates for your system in our `./configs` directory. 
 Replace your root `.apirc` with the corresponding `./config/distro.apirc`.
 
