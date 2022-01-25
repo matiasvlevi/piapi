@@ -12,7 +12,7 @@ ServerFetch allows you to log user selected values (System info, GPIO reads, etc
 
 * Node & npm
 * Typescript (`npm i -g typescript`)
-* neofetch (you can install neofetch on widows with [sccop](https://www.makeuseof.com/how-to-install-and-use-neofetch-on-windows/))
+* neofetch (you can install neofetch on widows with [scoop](https://www.makeuseof.com/how-to-install-and-use-neofetch-on-windows/))
 
 <br/>
 
@@ -39,6 +39,13 @@ This just created a plain `.apirc` and `.env` file.
 
 <br/>
 
+### Install Web app dependencies
+
+```sh
+cd ./web/public
+npm ci
+```
+
 
 ### .apirc
 
@@ -61,8 +68,6 @@ npm run logger
 ```
 npm run server
 ```
-
-
 
 <br/>
 
