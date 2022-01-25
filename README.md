@@ -12,7 +12,7 @@ ServerFetch allows you to log user selected values (System info, GPIO reads, etc
 
 * Node & npm
 * Typescript (`npm i -g typescript`)
-* neofetch (you can install neofetch on widows with [scoop](https://www.makeuseof.com/how-to-install-and-use-neofetch-on-windows/))
+* neofetch (you can install neofetch on windows with [scoop](https://www.makeuseof.com/how-to-install-and-use-neofetch-on-windows/))
 
 <br/>
 
