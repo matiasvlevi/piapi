@@ -1,0 +1,62 @@
+{
+  "freq": "5000",
+  "charts": {
+    "CPU Temperature (C)": {
+      "data": [
+        {
+          "name": "Core 0",
+          "cmd": "sensors | egrep 'Core 0' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        },
+        {
+          "name": "Core 1",
+          "cmd": "sensors | egrep 'Core 1' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        },
+        {
+          "name": "Core 2",
+          "cmd": "sensors | egrep 'Core 2' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        },
+        {
+          "name": "Core 3",
+          "cmd": "sensors | egrep 'Core 3' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        }
+      ],
+      "bounds":[20, 90]
+    },
+    "RAM": {
+      "data": [
+        {
+          "name": "Ram used",
+          "cmd": "free -m | egrep 'Mem:' | awk '{print $3}'"
+        }
+      ],
+      "bounds":[0, 16000]
+    },
+    "GPU Temperature (C)": {
+      "data": [
+        {
+          "name": "GPU temperature",
+          "cmd": "nvidia-smi --query-gpu=\"temperature.gpu\" --format=\"csv,noheader\" | egrep -o \"[0-9].*[0-9]\""
+        }
+      ],
+      "bounds":[20, 90]
+    },
+    "GPU Memory (MiB)": {
+      "data": [
+        {
+          "name": "GPU free memory",
+          "cmd": "nvidia-smi --query-gpu=\"memory.free\" --format=\"csv,noheader\" | egrep -o \"[0-9].*[0-9]\""
+        }
+      ],
+      "bounds":[0, 6000]
+    },
+    "Utilisation (%)": {
+      "data": [
+        {
+          "name": "GPU utilization",
+          "cmd": "nvidia-smi --query-gpu=\"utilization.gpu\" --format=\"csv,noheader\" | egrep -o \"[0-9]\""
+        }
+      ],
+      "bounds":[0, 100]
+    }
+  }
+}

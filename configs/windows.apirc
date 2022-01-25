@@ -1,0 +1,34 @@
+{
+  "freq": "10000",
+  "charts": {
+    "RAM (MiB)": {
+      "data": [{
+        "name": "Available",
+        "cmd": "systeminfo | findstr /C:\"Available Physical Memory\" | gawk \"{print $4}\""
+      }],
+      "responsivePointSize": true,
+      "bounds": [
+        0,
+        16000
+      ]
+    },
+    "Temperature (C)": {
+      "data": [{
+        "name": "GPU",
+        "cmd": "nvidia-smi --query-gpu=\"temperature.gpu\" --format=\"csv,noheader\""
+      }],
+      "responsivePointSize": true,
+      "bounds": [
+        20,
+        90
+      ]
+    },
+    "GPU (MiB)": {
+      "data": [{
+        "name": "Free memory",
+        "cmd": "nvidia-smi --query-gpu=\"memory.free\" --format=\"csv,noheader\" | gawk \"{print $1}\""
+      }],
+      "responsivePointSize": true
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "freq": "5000",
+  "charts": {
+    "temperature": {
+      "data": [
+        {
+          "name": "cputemp",
+          "cmd": "vcgencmd measure_temp | egrep -o '[0-9]*\\.[0-9]*'"
+        }
+      ],
+      "bounds": [
+        0,
+        100
+      ]
+    },
+    "clock": {
+      "data": [
+        {
+          "name": "cpu clock",
+          "cmd": "vcgencmd measure_clock arm | egrep -o '[0-9]*[0-9]' | tail -1"
+        },
+        {
+          "name": "core clock",
+          "cmd": "vcgencmd measure_clock core | egrep -o '[0-9]*[0-9]' | tail -1"
+        }
+      ]
+    },
+    "memory": {
+      "data": [
+        {
+          "name": "gpu memory",
+          "cmd": "vcgencmd get_mem gpu | egrep -o '[0-9]*[0-9]' | tail -1"
+        }
+      ]
+    }
+  }
+}
