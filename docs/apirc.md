@@ -86,6 +86,24 @@ The web application generates graphs which update in real time.
 
 Adding the `bounds` property will apply the bounds on the corresponding graph.
 
+
+#### Responsive point size
+
+```json
+  "responsivePointSize": true
+```
+
+Adding the `responsivePointSize` property will allow for the points on the graph to scale according to the number of values present.
+
+
+
+<br/>
+
+You can look for usable templates for your system in our `./configs` directory. 
+Replace your root `.apirc` with the corresponding `./config/distro.apirc`.
+
+If your system is not present, feel free to add it in pull request!
+
 ---
 
 [go back](https://github.com/matiasvlevi/serverfetch)
