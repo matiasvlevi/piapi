@@ -1,4 +1,4 @@
-import Logger from "../index";
+import Logger from "../def";
 
 export function makeHeader(this: Logger): string[] {
   let ans: string[] = [];

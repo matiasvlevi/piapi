@@ -1,4 +1,4 @@
-import Logger from "../index";
+import Logger from "../def";
 
 export function getNbCol(this: Logger) {
   let sum: number = 0;

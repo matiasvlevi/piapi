@@ -1,4 +1,4 @@
-import Logger from "..";
+import Logger from "../def";
 
 export function genFileName(this: Logger): string {
   let id = Logger.genID();

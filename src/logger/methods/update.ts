@@ -1,5 +1,5 @@
 
-import Logger from "../index";
+import Logger from "../def";
 
 function delay(time: number) {
   return new Promise(resolve => setTimeout(resolve, time));

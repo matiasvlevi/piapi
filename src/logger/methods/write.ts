@@ -1,4 +1,4 @@
-import Logger from '../index';
+import Logger from '../def';
 
 export function write(this: Logger) {
   let data = this.stream.map(x => x.map(y => y.replace('\r', '')).join(','));
@@ -13,7 +13,7 @@ export function write(this: Logger) {
   Logger.writeFile(`${path}.log`, this.logstream);
 
   // Web data
-  Logger.writeFile(`./web/public/temp.json`, json);
+  Logger.writeFile(`./web/public/temp.json`, JSON.stringify(json));
   Logger.writeFile(`./web/public/len.json`, JSON.stringify({
     length: this.stream.length
   }));

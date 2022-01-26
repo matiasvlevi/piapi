@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2&family=Poppins:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/main.css">
-  <script src="./src/hide.js"></script>
+  <script src="./src/actions.js"></script>
   <script src="./src/main.js"></script>
 </head>
 
@@ -22,32 +22,43 @@
 
         <a href="https://github.com/matiasvlevi/serverfetch"><button>GitHub</button></a>
         <a><button onclick="hideHeader()">Hide Menu</button></a>
+        <a><button onclick="fullscreenMode()">Fullscreen</button></a>
       </div>
     </div>
   </header>
   <main>
 
-    <div class="grid">
-
-    </div>
     <div class="spacer"></div>
+
     <div class="grid" id="chartsGrid">
-      <div class="container" id="slim">
+      <div class="container meta" id="slim">
         <h3>Device</h3>
         <div class="metainfo">
 
           <img src="" width="200px" height="200px" id="distrologo" style="display:none;" alt="linux distro logo" />
           <div class="codeContainer">
             <code class="neofetch">
-                <pre id="neofetchBlock">
-  
-                </pre>
+                <pre id="neofetchBlock"></pre>
               </code>
           </div>
-          <div>
-            <p></p>
-          </div>
+        </div>
+        <div class="shell">
+          <h3></h3>
+          <code>
+            <br/>
+            <pre>
+              REST API Calls:
 
+              // Get whole data
+              https://127.0.0.1:3000/api/
+
+              // Get chart data
+              https://127.0.0.1:3000/api/{CHART_NAME}
+
+              // Get neofetch output
+              https://127.0.0.1:3000/api/meta
+            </pre>
+          </code>
         </div>
       </div>
     </div>

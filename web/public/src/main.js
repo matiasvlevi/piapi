@@ -9,12 +9,13 @@ fetch('../temp.json').then(res => res.json()).then(x => {
 const max = 100;
 const chart = 'myChart1';
 const charts = [];
-function makeArray(n, f = 5000) {
-  let ans = [];
-  let maxtime = f * n;
-  for (let i = 0; i < n; i++) {
 
-    let v = ((maxtime) - ((i * f))) / 1000;
+function makeArray(n) {
+  let ans = [];
+  let freq = 5000;
+  let maxtime = 5000 * n;
+  for (let i = 0; i < n; i++) {
+    let v = ((maxtime) - ((i * freq))) / 1000;
     if (i / 5 === Math.floor(i / 5)) {
       ans.push(`-${v} sec`)
     } else {
@@ -23,6 +24,7 @@ function makeArray(n, f = 5000) {
   }
   return ans;
 }
+
 
 function randomColor(i) {
   let r = Math.random() * 155;
@@ -50,7 +52,7 @@ function init(chartData, n) {
     d.push(obj);
     i++;
   }
-  let a = (n > max) ? makeArray(max, freq) : makeArray(n, freq);
+  let a = (n > max) ? makeArray(max, 5000) : makeArray(n, 5000);
 
   const data = {
     labels: a,
@@ -80,7 +82,7 @@ function loadLogo(os) {
 }
 
 function updateLabels(chart, n) {
-  chart.data.labels = makeArray(n, freq);
+  chart.data.labels = makeArray(n, 5000);
 }
 
 function addData(chart, data) {
@@ -128,7 +130,7 @@ function download(chart) {
   downloadFile(`${chart.replaceAll(' ', '_')}-${d.getDate()}-${d.getMonth()}-${d.getFullYear()}`, file);
 }
 
-function addDomGraph(chart, i, config) {
+function addDomGraph(chart, unit, i, config) {
 
   let chartName = `chart${i}`
 
@@ -142,7 +144,7 @@ function addDomGraph(chart, i, config) {
 
   // Title
   let chartTitle = document.createElement('h3');
-  chartTitle.textContent = chart;
+  chartTitle.textContent = `${chart} (${unit})`;
 
   // Download button
   let downloadButton = document.createElement('button');
@@ -227,7 +229,7 @@ function main(json) {
       options: opt
     };
 
-    addDomGraph(chart, i, config);
+    addDomGraph(chart, chrt.unit, i, config);
     i++;
   }
   // Resize plots
@@ -243,7 +245,7 @@ function main(json) {
       elem.style.height = '100%';
     });
   }
-  setTimeout(UpdateGraph, freq);
+  setTimeout(UpdateGraph, 5000);
 }
 
 function setValue(i, key, v) {
@@ -258,7 +260,7 @@ function mapSteps(minSize, maxSize, x, total) {
 
 function responsivePointSize(length, max) {
   let len = (length > max) ? max : length;
-  let size = mapSteps(2, 6, len, max);
+  let size = mapSteps(1, 4, len, max);
   return size;
 }
 
@@ -266,16 +268,15 @@ function setPointSize(size, i) {
   console.log('Size', size)
   charts[i].config._config.options.pointRadius = size;
 }
-let freq = 1;
+let freq = 5000;
 // UpdateGraph
 function UpdateGraph() {
 
   fetch('../len.json').then(res => res.json()).then(ign => {
-    console.log(ign)
     if (ign.length > oldlength) {
       fetch('../temp.json').then(res => res.json()).then(json => {
         window.serverfetch = json;
-        freq = json.freq;
+        freq = 5000; // json.freq;
         loadNeofetch(json.fetch);
         if (json.length > oldlength) {
           let j = 0;
@@ -312,11 +313,10 @@ function UpdateGraph() {
           console.log('Updating...');
           oldlength = ign.length;
         }
-        setTimeout(UpdateGraph, freq);
+        setTimeout(UpdateGraph, 5000);
       });
     } else {
-      setTimeout(UpdateGraph, freq);
+      setTimeout(UpdateGraph, 5000);
     }
   })
 }
-

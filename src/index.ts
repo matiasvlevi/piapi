@@ -1,5 +1,3 @@
-import Logger from './logger/index';
-
-let logger = new Logger();
+import logger from './logger/index';
 
 logger.update();

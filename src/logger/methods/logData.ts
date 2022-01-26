@@ -1,5 +1,5 @@
 
-import Logger from "../index";
+import Logger from "../def";
 
 
 /**

@@ -1,4 +1,4 @@
-import Logger from "../index";
+import Logger from "../def";
 
 /**
  * Display a string in the console, with a time and date record.
@@ -17,11 +17,3 @@ export function log(this: Logger, msg: string) {
   this.logstream += `${Logger.removeColors(message)}\n`;
 }
 
-export function configErr(stderr: string) {
-  if (stderr !== null) {
-    console.error(stderr);
-    console.log(`\nPlease configure the '.apirc' file`);
-    return true;
-  }
-  return false;
-}

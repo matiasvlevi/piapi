@@ -1,46 +1,48 @@
-import Logger from '../index'
+import Logger from '../def'
 
-export function makeJSON(this: Logger) {
+function makeJSON(this: Logger) {
 
   let header = this.makeHeader();
   let length: number = this.stream.length;
   let data: any = {};
   for (let chart in this.config.charts) {
-    data[chart] = {};
-    data[chart].data = {};
+    let chartname = chart.toLocaleLowerCase();
+    data[chartname] = {};
+    data[chartname].data = {};
     let currentChart = this.config.charts[chart];
     for (let i = 0; i < currentChart.data.length; i++) {
-      data[chart].data[currentChart.data[i].name] = [];
+      data[chartname].data[currentChart.data[i].name.toLocaleLowerCase()] = [];
     }
   }
 
   for (let chart in this.config.charts) {
     let currentChart = this.config.charts[chart];
-
+    let chartname = chart.toLocaleLowerCase();
     for (let i = 0; i < currentChart.data.length; i++) {
       let h = header.indexOf(currentChart.data[i].name);
       for (let j = 0; j < this.stream.length; j++) {
-        data[chart].data[currentChart.data[i].name].push(this.stream[j][h])
+        data[chartname].data[currentChart.data[i].name.toLocaleLowerCase()].push(this.stream[j][h])
       }
     }
 
     // Add relevant options to the web application
-    let optionKeys = ['bounds', 'responsivePointSize', 'pointSize'];
+    let optionKeys = ['bounds', 'responsivePointSize', 'pointSize', "unit"];
     for (let key of optionKeys) {
       if (Object.keys(this.config.charts[chart]).includes(key)) {
-        data[chart][key] = this.config.charts[chart][key];
+        data[chartname][key.toLocaleLowerCase()] = this.config.charts[chart][key];
       }
     }
 
   }
 
-  // JSON sent to the Web App 
-  let json = JSON.stringify({
+  let content = {
     header,
     data,
     length,
     freq: this.config.freq,
     fetch: this.fetch
-  });
-  return json;
+  };
+  // JSON sent to the Web App 
+  return content;
 }
+export { makeJSON };
