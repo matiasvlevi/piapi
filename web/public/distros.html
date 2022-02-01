@@ -1,15 +1,25 @@
 <html>
 
-  <head>
-    <link rel="stylesheet" href="./assets/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="./src/distros.js"></script>
-    <script src="./src/addIcons.js"></script>
+<head>
+  <link rel="stylesheet" href="./assets/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="./src/distros.js"></script>
+  <script src="./src/addIcons.js"></script>
+  <style>
+    img {
+      transition: 0.3s;
+      transform: scale(1);
+    }
+    
+    img:hover {
+      transition: 0.3s;
+      transform: scale(1.5);
+    }
+  </style>
+</head>
 
-  </head>
-
-  <body style="width:90%;margin:auto;">
-    <div class="grid"></div>
-  </body> 
+<body style="width:90%;margin:auto;">
+  <div class="grid" style="display:flex"></div>
+</body>
 
 </html>

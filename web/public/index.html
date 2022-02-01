@@ -50,19 +50,19 @@
     REST API Calls:
 
     // Get whole data
-    https://127.0.0.1:3000/api/
+    https://127.0.0.1:3000/api/{TOKEN}
 
     // Get only latest data (Updated every 5 to 15 seconds)
-    https://127.0.0.1:3000/api/latest
+    https://127.0.0.1:3000/api/{TOKEN}/latest
 
     // Get charts
-    https://127.0.0.1:3000/api/{CHART_NAME}
+    https://127.0.0.1:3000/api/{TOKEN}/{CHART_NAME}
 
     // Get specific streams of data from charts
-    https://127.0.0.1:3000/api/{CHART_NAME}/{STREAM_NAME}
+    https://127.0.0.1:3000/api/{TOKEN}/{CHART_NAME}/{STREAM_NAME}
 
     // Get meta data
-    https://127.0.0.1:3000/api/meta
+    https://127.0.0.1:3000/api/{TOKEN}/meta
             </pre>
           </code>
         </div>

@@ -6,5 +6,9 @@ echo "Created '.env' file"
 echo "Installing dependencies: "
 npm ci
 
+echo "Installing web app dependencies: "
+cd web/public
+npm ci
+
 echo "Building source"
 tsc -p .
