@@ -1,28 +1,8 @@
 {
   "freq": "5000",
   "charts": {
-    "CPU Temperature (C)": {
-      "data": [
-        {
-          "name": "Core 0",
-          "cmd": "sensors | egrep 'Core 0' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
-        },
-        {
-          "name": "Core 1",
-          "cmd": "sensors | egrep 'Core 1' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
-        },
-        {
-          "name": "Core 2",
-          "cmd": "sensors | egrep 'Core 2' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
-        },
-        {
-          "name": "Core 3",
-          "cmd": "sensors | egrep 'Core 3' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
-        }
-      ],
-      "bounds":[20, 90]
-    },
     "RAM": {
+      "unit":"Mb",
       "data": [
         {
           "name": "Ram used",
@@ -31,32 +11,51 @@
       ],
       "bounds":[0, 16000]
     },
-    "GPU Temperature (C)": {
+    "Temperature": {
+      "unit":"C",
       "data": [
         {
-          "name": "GPU temperature",
+          "name": "GPU",
           "cmd": "nvidia-smi --query-gpu=\"temperature.gpu\" --format=\"csv,noheader\" | egrep -o \"[0-9].*[0-9]\""
+        },
+        {
+          "name": "CPU 0",
+          "cmd": "sensors | egrep 'Core 0' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        },
+        {
+          "name": "CPU 1",
+          "cmd": "sensors | egrep 'Core 1' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        },
+        {
+          "name": "CPU 2",
+          "cmd": "sensors | egrep 'Core 2' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
+        },
+        {
+          "name": "CPU 3",
+          "cmd": "sensors | egrep 'Core 3' | awk '{print $3}' | egrep -o '[0-9].*[0-9]'"
         }
       ],
       "bounds":[20, 90]
     },
-    "GPU Memory (MiB)": {
+    "GPU Memory": {
+      "unit":"Mb",
       "data": [
         {
-          "name": "GPU free memory",
+          "name": "free",
           "cmd": "nvidia-smi --query-gpu=\"memory.free\" --format=\"csv,noheader\" | egrep -o \"[0-9].*[0-9]\""
         }
       ],
       "bounds":[0, 6000]
     },
-    "Utilisation (%)": {
+    "Utilisation": {
+      "unit":"%",
       "data": [
         {
-          "name": "GPU utilization",
+          "name": "GPU",
           "cmd": "nvidia-smi --query-gpu=\"utilization.gpu\" --format=\"csv,noheader\" | egrep -o \"[0-9]\""
         }
       ],
-      "bounds":[0, 100]
+      "bounds":[0, 101]
     }
   }
 }

@@ -1,12 +1,38 @@
+const { readFileSync } = require('fs');
 const config = require('dotenv').config().parsed;
-const logger = require('../bin/logger/index.js').default;
 const express = require('express');
-const fs = require('fs');
-const server = express();
-const path = '/api';
 
-const getData = () => JSON.parse(fs.readFileSync('./web/public/temp.json', 'utf8'));
-console.log(getData())
+function replaceAll(line, char) {
+  let nline = line;
+  while (nline.includes(char))
+    nline = nline.replace(char, '');
+
+  return nline;
+}
+
+function getLatest(content) {
+  let responseData = {}
+  for (let chart in content.data) {
+    responseData[chart] = {}
+    let nchart = replaceAll(chart, ' ');
+    for (let line in content.data[chart].data) {
+      let values = content.data[chart].data[line];
+      let nline = replaceAll(line, ' ');
+      responseData[nchart][nline] = values[values.length - 1];
+    }
+  }
+  return responseData;
+}
+
+// Get Logger Data
+const getData = () =>
+  JSON.parse(
+    readFileSync('./web/public/temp.json', 'utf8')
+  );
+
+const server = express();
+
+const path = '/api';
 server.get(`${path}`, (req, res) => {
   try {
     let content = getData();
@@ -21,33 +47,45 @@ server.get(`${path}`, (req, res) => {
 
 server.get(`${path}/:key`, (req, res) => {
   let key = req.params.key.toLocaleLowerCase();
-
   let content = getData();
-  if (key === 'meta') {
+  let response = {};
+  if (content === undefined) {
+    res.send(`${key} is not a valid query`);
+    return;
+  } else if (key === 'meta') {
     let d = {...content };
     delete d.data;
-    res.send(d);
+    response = d;
     return;
+  } else if (key === 'latest') {
+    response = getLatest(content);
+  } else {
+    response = content.data[key].data;
   }
-  res.send(content.data[req.params.key].data);
+  res.send(response);
   return;
-
 });
 
 server.get(`${path}/:key/:line`, (req, res) => {
   let key = req.params.key.toLocaleLowerCase();
-  if (key === 'meta') {
+  let line = req.params.line.toLocaleLowerCase();
+  if (content === undefined) {
+    res.send(`${key}/${line} is not a valid query`);
     return;
   }
-  let line = req.params.line;
+  if (key === 'meta') {
+    res.send(`Could not get ${req.params.line}`);
+    return;
+  }
   let content = getData();
 
   res.send(content.data[key].data[line]);
   return;
 });
 
+
 server.get(`${path}/:key/:line/latest`, (req, res) => {
-  let key = req.params.key;
+  let key = req.params.key.toLocaleLowerCase();
   if (key === 'meta') {
     return;
   }

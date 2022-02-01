@@ -1,34 +1,37 @@
 {
   "freq": "5000",
   "charts": {
-    "temperature": {
+    "Temperature": {
+      "unit":"C",
       "data": [
         {
-          "name": "cputemp",
+          "name": "CPU",
           "cmd": "vcgencmd measure_temp | egrep -o '[0-9]*\\.[0-9]*'"
         }
       ],
       "bounds": [
         0,
-        100
+        90
       ]
     },
-    "clock": {
+    "Clock": {
+      "unit":"Mhz",
       "data": [
         {
-          "name": "cpu clock",
+          "name": "CPU",
           "cmd": "vcgencmd measure_clock arm | egrep -o '[0-9]*[0-9]' | tail -1"
         },
         {
-          "name": "core clock",
+          "name": "CORE",
           "cmd": "vcgencmd measure_clock core | egrep -o '[0-9]*[0-9]' | tail -1"
         }
       ]
     },
-    "memory": {
+    "GPU Memory": {
+      "unit":"Mb",
       "data": [
         {
-          "name": "gpu memory",
+          "name": "free",
           "cmd": "vcgencmd get_mem gpu | egrep -o '[0-9]*[0-9]' | tail -1"
         }
       ]

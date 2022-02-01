@@ -47,16 +47,22 @@
           <code>
             <br/>
             <pre>
-              REST API Calls:
+    REST API Calls:
 
-              // Get whole data
-              https://127.0.0.1:3000/api/
+    // Get whole data
+    https://127.0.0.1:3000/api/
 
-              // Get chart data
-              https://127.0.0.1:3000/api/{CHART_NAME}
+    // Get only latest data (Updated every 5 to 15 seconds)
+    https://127.0.0.1:3000/api/latest
 
-              // Get neofetch output
-              https://127.0.0.1:3000/api/meta
+    // Get charts
+    https://127.0.0.1:3000/api/{CHART_NAME}
+
+    // Get specific streams of data from charts
+    https://127.0.0.1:3000/api/{CHART_NAME}/{STREAM_NAME}
+
+    // Get meta data
+    https://127.0.0.1:3000/api/meta
             </pre>
           </code>
         </div>

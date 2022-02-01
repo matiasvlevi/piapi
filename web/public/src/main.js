@@ -245,7 +245,7 @@ function main(json) {
       elem.style.height = '100%';
     });
   }
-  setTimeout(UpdateGraph, 5000);
+  UpdateGraph();
 }
 
 function setValue(i, key, v) {
@@ -281,11 +281,12 @@ function UpdateGraph() {
         if (json.length > oldlength) {
           let j = 0;
           for (let chart in json.data) {
+
             let chrt = json.data[chart];
             let values = [];
-            let keys = Object.keys(chrt.data);
-            for (let i = 0; i < keys.length; i++) {
-              let l = chrt.data[keys[i]];
+
+            for (let key in chrt.data) {
+              let l = chrt.data[key];
               values.push(l[l.length - 1])
             }
 
