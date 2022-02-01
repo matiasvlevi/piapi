@@ -13,8 +13,8 @@ function replaceAll(line, char) {
 function getLatest(content) {
   let responseData = {}
   for (let chart in content.data) {
-    responseData[chart] = {}
     let nchart = replaceAll(chart, ' ');
+    responseData[nchart] = {}
     for (let line in content.data[chart].data) {
       let values = content.data[chart].data[line];
       let nline = replaceAll(line, ' ');
